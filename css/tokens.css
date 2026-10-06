@@ -92,8 +92,31 @@
     --size-control-lg: 3.8125rem; /* 61px: search button from lg */
     --size-icon: 1.5rem; /* 24px */
     --size-icon-lg: 1.6875rem; /* 27px */
+    --size-icon-chevron: 1.25rem; /* 20px */
     --size-icon-category: 5.125rem; /* 82px */
     --border-width: 0.125rem; /* 2px */
+
+    /* ---------- Product cards and carousel (PRD 5.4 / 5.5) ---------- */
+    --card-border-width: 0.09375rem; /* 1.5px */
+    --card-width: 22.875rem; /* 366px: design width, also the cap on wide phones and small tablets */
+    --card-ratio: 366 / 570; /* lower bound for the card height; content can only make it taller */
+    --card-image-ratio: 334 / 364;
+    --card-button-padding: 0.625rem 1.625rem; /* 10px 26px */
+    --size-heart: 2.0625rem; /* 33px */
+    --inset-heart: 1.125rem; /* 18px from the image edges */
+    --size-arrow-xl: 4.4375rem; /* 71px */
+    --size-icon-arrow: 2.125rem; /* 34px */
+    --carousel-width: 92.25rem; /* 1476px: four 366px cards plus three 4px gaps */
+    --carousel-bleed: var(--space-16); /* room around the cards for the hover shadow; equals the gap at lg so no sliver of the next card shows */
+    --arrow-inset-xl: 5rem; /* 80px from the viewport edge at 1920px */
+
+    /* ---------- Promo CTA (PRD 5.6) ---------- */
+    --promo-height: 20.9375rem; /* 335px */
+    --promo-hand-width: min(32.5625rem, 28vw); /* 521px, scaled down on narrow screens */
+    --promo-beans-width: min(31.4375rem, 27vw); /* 503px, scaled down on narrow screens */
+    --promo-text-width: 23.25rem; /* 372px */
+    --promo-cta-width: 16.125rem; /* 258px */
+    --promo-cta-height: 3.1875rem; /* 51px */
 
     /* ---------- Spacing (named after their pixel value at 16px root) ---------- */
     --space-4: 0.25rem;
@@ -112,6 +135,7 @@
     /* ---------- Motion, elevation, focus, stacking ---------- */
     --transition-base: 200ms ease;
     --shadow-card: 0 12px 28px rgb(48 38 28 / 0.14);
+    --filter-icon-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.5)); /* keeps white icons legible over photos */
     --focus-width: 2px;
     --focus-offset: 3px;
     --focus-color: var(--color-espresso); /* dark surfaces override it with --color-white */

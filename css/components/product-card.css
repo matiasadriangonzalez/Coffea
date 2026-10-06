@@ -1,3 +1,160 @@
-/* Product card: image with favorite toggle, title, description, price and order button. */
+/*
+ * Product card: image with favourite toggle, name, description, price and order button.
+ * Used inside the carousel (.carousel__item sets its width and snap alignment).
+ */
 @layer components {
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16);
+    padding: var(--space-16);
+    border-radius: var(--radius-card);
+    background-color: var(--color-sand-20);
+    /*
+     * The 1.5px frame is an inset outline instead of a border: a border would take 3px from the
+     * content box (browsers snap it to whole device pixels) and the photo would be 332px instead of
+     * the 334px of the design. Outlines also stay visible in forced-colors mode.
+     */
+    outline: var(--card-border-width) solid var(--color-sand);
+    outline-offset: calc(var(--card-border-width) * -1);
+    /* Height lower bound that scales with the width: 366 x 570 at the design size. */
+    aspect-ratio: var(--card-ratio);
+    transition: box-shadow var(--transition-base);
+  }
+
+  /* ---------- Image and favourite toggle ---------- */
+
+  /* overflow: hidden keeps the hover zoom of the photo inside the rounded frame. */
+  .product-card__media {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-img);
+  }
+
+  .product-card__image {
+    width: 100%;
+    aspect-ratio: var(--card-image-ratio);
+    object-fit: cover;
+    transition: transform var(--transition-base);
+  }
+
+  /*
+   * The label is the 44px tap target; the heart (33px) sits 18px from the image edges,
+   * so the label is pulled out by half of the difference between both sizes.
+   */
+  .product-card__fav {
+    --fav-offset: calc(var(--inset-heart) - (var(--tap-target) - var(--size-heart)) / 2);
+
+    position: absolute;
+    inset: var(--fav-offset) var(--fav-offset) auto auto;
+    display: grid;
+    place-items: center;
+    width: var(--tap-target);
+    height: var(--tap-target);
+    border-radius: var(--radius-round);
+    color: var(--color-white);
+    cursor: pointer;
+  }
+
+  .product-card__heart {
+    grid-area: 1 / 1;
+    font-size: var(--size-heart);
+    filter: var(--filter-icon-shadow);
+  }
+
+  /*
+   * Both hearts share one grid cell and the checked state swaps which one is visible.
+   * visibility (not display) because the .icon utility sets display and comes later in the cascade.
+   */
+  .product-card__heart--on,
+  .product-card__fav-input:checked + .product-card__fav .product-card__heart--off {
+    visibility: hidden;
+  }
+
+  .product-card__fav-input:checked + .product-card__fav .product-card__heart--on {
+    visibility: visible;
+  }
+
+  /* Two-tone ring (white inside, espresso outside): visible over any part of any photo. */
+  .product-card__fav-input:focus-visible + .product-card__fav {
+    outline: var(--focus-width) solid var(--color-white);
+    outline-offset: 0;
+    box-shadow: 0 0 0 calc(var(--focus-width) * 2) var(--color-espresso);
+  }
+
+  /* ---------- Text ---------- */
+
+  .product-card__name {
+    font-family: var(--font-body);
+    font-size: var(--fs-card-title);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-tight);
+    color: var(--color-espresso);
+    overflow-wrap: break-word;
+  }
+
+  .product-card__description {
+    font-size: var(--fs-lg);
+    line-height: var(--lh-desc);
+    color: var(--color-maroon);
+  }
+
+  /* ---------- Price and button ---------- */
+
+  /* margin-top: auto pins the row to the bottom when the card is taller than its content. */
+  .product-card__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-12);
+    margin-top: auto;
+  }
+
+  .product-card__price {
+    font-family: var(--font-ui);
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-tight);
+    color: var(--color-maroon);
+  }
+
+  .product-card__button {
+    min-height: var(--tap-target);
+    padding: var(--space-8) var(--space-24);
+    border-radius: var(--radius-btn);
+    background-color: var(--color-maroon);
+    color: var(--color-white);
+    font-family: var(--font-ui);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    line-height: var(--lh-base);
+    transition:
+      background-color var(--transition-base),
+      transform var(--transition-base);
+  }
+
+  /* Hover only where a pointer can hover: card elevation, photo zoom and button lift. */
+  @media (hover: hover) {
+    .product-card:hover {
+      box-shadow: var(--shadow-card);
+    }
+
+    .product-card:hover .product-card__image {
+      transform: scale(1.03);
+    }
+
+    .product-card__button:hover {
+      background-color: var(--color-muted);
+      transform: translateY(-2px);
+    }
+  }
+
+  /* From lg the 44px minimum is dropped and the button takes the design size (10px x 26px padding). */
+  @media (min-width: 64em) {
+    .product-card__button {
+      min-height: 0;
+      padding: var(--card-button-padding);
+    }
+  }
 }

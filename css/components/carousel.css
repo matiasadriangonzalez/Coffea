@@ -1,3 +1,183 @@
-/* Scroll-snap carousel track shared by the coffee and dessert sections, with arrow links. */
+/*
+ * Products section and its CSS-only carousel (shared by "Our Special Coffee" and "Our Special Dessert").
+ *
+ * The track is a native scroll container (swipe, trackpad, keyboard) with scroll snapping.
+ * The arrows are plain anchors to the first and last card: with `scroll-behavior: smooth`
+ * (base.css) the browser scrolls the track to that card, no JavaScript involved.
+ * Cards are sized from the track width: every card is
+ *   (track width - visible gaps * gap) / visible cards
+ * so the number of cards on screen is a per-breakpoint decision, not a fixed pixel size.
+ */
 @layer components {
+  .products {
+    padding-block: var(--space-48) var(--space-16);
+    background-color: var(--color-bg);
+  }
+
+  .products__title {
+    /* 32px below plus the 32px padding of the track gives the 64px of the design. */
+    margin-bottom: var(--space-32);
+    padding-inline: var(--space-16);
+    color: var(--color-espresso);
+    font-size: var(--fs-h2);
+    letter-spacing: var(--tracking-h2);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  /* ---------- Base: about 1.2 cards visible, next one peeks, arrows hidden ---------- */
+
+  .carousel {
+    --carousel-gap: var(--space-16);
+    --carousel-visible: 1.2; /* cards on screen, fractions let the next card peek */
+    --carousel-gaps: 1; /* gaps that fit in the track at that number of cards */
+    --carousel-pad: var(--space-16); /* track side padding, aligned with the page gutter */
+
+    position: relative;
+  }
+
+  /* Full-bleed track: cards start at the page gutter and scroll to the screen edge. */
+  .carousel__track {
+    /* Positioned so the visually hidden labels of the cards are contained and scroll with them. */
+    position: relative;
+    display: flex;
+    gap: var(--carousel-gap);
+    padding: var(--space-32) var(--carousel-pad);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--carousel-pad);
+    scrollbar-width: none;
+  }
+
+  .carousel__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* The track is the scroll container, so its ring is drawn inside to stay on screen. */
+  .carousel__track:focus-visible {
+    outline-offset: calc(var(--focus-width) * -1);
+  }
+
+  /*
+   * Anchor links (the arrows) scroll the page too, not only the track. This margin equals the space
+   * above the card (section padding, title, gap, track padding), so the section top lines up with
+   * the viewport top, the same place the category links leave it, instead of jumping to the card.
+   */
+  .carousel__item {
+    scroll-margin-block-start: calc(
+      var(--space-48) + var(--fs-h2) * var(--lh-tight) + var(--space-32) + var(--space-32)
+    );
+    flex: 0 0 calc((100% - var(--carousel-gaps) * var(--carousel-gap)) / var(--carousel-visible));
+    max-width: var(--card-width); /* a card never grows past its design size (wide phones, 600px tablets) */
+    scroll-snap-align: start;
+  }
+
+  .carousel__arrow {
+    display: none;
+  }
+
+  /* ---------- md: about 2.5 cards ---------- */
+  @media (min-width: 48em) {
+    .carousel {
+      --carousel-visible: 2.5;
+      --carousel-gaps: 2;
+      --carousel-pad: var(--space-32);
+    }
+
+    .products__title {
+      padding-inline: var(--space-32);
+    }
+  }
+
+  /*
+   * ---------- lg: 3 cards and arrows ----------
+   * The arrows live in the margins on both sides of the track, so they never cover a card:
+   * the track shrinks by one arrow zone per side (inset + arrow + breathing room).
+   */
+  @media (min-width: 64em) {
+    .carousel {
+      --carousel-gap: var(--space-16);
+      --carousel-visible: 3;
+      --carousel-gaps: 2;
+      --carousel-pad: var(--carousel-bleed);
+      --arrow-size: var(--size-control);
+      --arrow-inset: var(--space-16);
+      --carousel-zone: calc(var(--arrow-inset) + var(--arrow-size) + var(--space-16));
+    }
+
+    .carousel__track {
+      width: min(
+        calc(var(--carousel-width) + 2 * var(--carousel-bleed)),
+        calc(100% - 2 * var(--carousel-zone))
+      );
+      margin-inline: auto;
+    }
+
+    .carousel__arrow {
+      position: absolute;
+      top: 50%;
+      display: grid;
+      place-items: center;
+      width: var(--arrow-size);
+      height: var(--arrow-size);
+      border-radius: var(--radius-round);
+      background-color: var(--color-sand);
+      color: var(--color-espresso);
+      font-size: var(--size-icon);
+      transform: translateY(-50%);
+      transition:
+        background-color var(--transition-base),
+        color var(--transition-base);
+    }
+
+    .carousel__arrow--prev {
+      left: var(--arrow-inset);
+    }
+
+    .carousel__arrow--next {
+      right: var(--arrow-inset);
+    }
+
+    .carousel__arrow:focus-visible {
+      background-color: var(--color-espresso);
+      color: var(--color-bg);
+    }
+  }
+
+  @media (min-width: 64em) and (hover: hover) {
+    .carousel__arrow:hover {
+      background-color: var(--color-espresso);
+      color: var(--color-bg);
+    }
+  }
+
+  /* ---------- 1280px: 4 cards and the 4px gap of the design ---------- */
+  @media (min-width: 80em) {
+    .carousel {
+      --carousel-gap: var(--space-4);
+      --carousel-visible: 4;
+      --carousel-gaps: 3;
+    }
+  }
+
+  /*
+   * ---------- xl: design size ----------
+   * 71px arrows 80px from the viewport edge at 1920px (the inset grows from 24px at 1440px),
+   * and a 1476px track of four 366px cards centred between them.
+   */
+  @media (min-width: 90em) {
+    .carousel {
+      --arrow-size: var(--size-arrow-xl);
+      --arrow-inset: clamp(
+        var(--space-24),
+        var(--space-24) + (100vw - 90rem) * 0.1167,
+        var(--arrow-inset-xl)
+      );
+    }
+
+    .carousel__arrow {
+      font-size: var(--size-icon-arrow);
+    }
+  }
 }

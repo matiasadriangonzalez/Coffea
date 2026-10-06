@@ -181,16 +181,307 @@
         </div>
       </section>
 
+      <!--
+        Products: names, descriptions and prices are PLACEHOLDERS copied from the design (the dessert
+        section reuses the coffee copy). The photos are real. Each carousel is a native scroll
+        container; the arrows are anchors to the first and last card (no JavaScript).
+      -->
       <section class="products" id="coffee" aria-labelledby="coffee-title">
-        <!-- T3: h2#coffee-title, product carousel (coffee) -->
+        <h2 class="products__title" id="coffee-title">Our Special Coffee</h2>
+
+        <div class="carousel">
+          <a class="carousel__arrow carousel__arrow--prev" href="#coffee-1">
+            <svg class="icon carousel__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-left" /></svg>
+            <span class="visually-hidden">Previous coffee</span>
+          </a>
+
+          <div class="carousel__track" role="group" aria-roledescription="carousel" aria-label="Special coffee" tabindex="0">
+          <article class="product-card carousel__item" id="coffee-1">
+            <div class="product-card__media">
+              <picture>
+                <source type="image/avif" srcset="assets/img/coffee-1.avif">
+                <source type="image/webp" srcset="assets/img/coffee-1.webp">
+                <img
+                  class="product-card__image"
+                  src="assets/img/coffee-1.jpg"
+                  width="334"
+                  height="364"
+                  alt="Espresso in a white cup on a light blue saucer, on a wooden table"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
+              <input class="product-card__fav-input visually-hidden" type="checkbox" id="coffee-1-fav">
+              <label class="product-card__fav" for="coffee-1-fav">
+                <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
+                <svg class="icon product-card__heart product-card__heart--on" aria-hidden="true" focusable="false"><use href="#icon-heart-filled" /></svg>
+                <span class="visually-hidden">Add Lungo coffee to favourites</span>
+              </label>
+            </div>
+            <h3 class="product-card__name">Lungo coffee</h3>
+            <p class="product-card__description">Strong, smooth and full of flavour.</p>
+            <div class="product-card__row">
+              <data class="product-card__price" value="200">Rs. 200</data>
+              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
+            </div>
+          </article>
+
+          <article class="product-card carousel__item" id="coffee-2">
+            <div class="product-card__media">
+              <picture>
+                <source type="image/avif" srcset="assets/img/coffee-2.avif">
+                <source type="image/webp" srcset="assets/img/coffee-2.webp">
+                <img
+                  class="product-card__image"
+                  src="assets/img/coffee-2.jpg"
+                  width="334"
+                  height="364"
+                  alt="Cappuccino with heart-shaped latte art in a white cup on a dark table"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
+              <input class="product-card__fav-input visually-hidden" type="checkbox" id="coffee-2-fav">
+              <label class="product-card__fav" for="coffee-2-fav">
+                <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
+                <svg class="icon product-card__heart product-card__heart--on" aria-hidden="true" focusable="false"><use href="#icon-heart-filled" /></svg>
+                <span class="visually-hidden">Add Lungo coffee to favourites</span>
+              </label>
+            </div>
+            <h3 class="product-card__name">Lungo coffee</h3>
+            <p class="product-card__description">Strong, smooth and full of flavour.</p>
+            <div class="product-card__row">
+              <data class="product-card__price" value="200">Rs. 200</data>
+              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
+            </div>
+          </article>
+
+          <article class="product-card carousel__item" id="coffee-3">
+            <div class="product-card__media">
+              <picture>
+                <source type="image/avif" srcset="assets/img/coffee-3.avif">
+                <source type="image/webp" srcset="assets/img/coffee-3.webp">
+                <img
+                  class="product-card__image"
+                  src="assets/img/coffee-3.jpg"
+                  width="334"
+                  height="364"
+                  alt="Top view of a latte with leaf-shaped milk foam on a round rustic wooden stool"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
+              <input class="product-card__fav-input visually-hidden" type="checkbox" id="coffee-3-fav">
+              <label class="product-card__fav" for="coffee-3-fav">
+                <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
+                <svg class="icon product-card__heart product-card__heart--on" aria-hidden="true" focusable="false"><use href="#icon-heart-filled" /></svg>
+                <span class="visually-hidden">Add Lungo coffee to favourites</span>
+              </label>
+            </div>
+            <h3 class="product-card__name">Lungo coffee</h3>
+            <p class="product-card__description">Strong, smooth and full of flavour.</p>
+            <div class="product-card__row">
+              <data class="product-card__price" value="200">Rs. 200</data>
+              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
+            </div>
+          </article>
+
+          <article class="product-card carousel__item" id="coffee-4">
+            <div class="product-card__media">
+              <picture>
+                <source type="image/avif" srcset="assets/img/coffee-4.avif">
+                <source type="image/webp" srcset="assets/img/coffee-4.webp">
+                <img
+                  class="product-card__image"
+                  src="assets/img/coffee-4.jpg"
+                  width="334"
+                  height="364"
+                  alt="Latte with leaf-shaped foam art in a grey cup on a sunlit table"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
+              <input class="product-card__fav-input visually-hidden" type="checkbox" id="coffee-4-fav">
+              <label class="product-card__fav" for="coffee-4-fav">
+                <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
+                <svg class="icon product-card__heart product-card__heart--on" aria-hidden="true" focusable="false"><use href="#icon-heart-filled" /></svg>
+                <span class="visually-hidden">Add Lungo coffee to favourites</span>
+              </label>
+            </div>
+            <h3 class="product-card__name">Lungo coffee</h3>
+            <p class="product-card__description">Strong, smooth and full of flavour.</p>
+            <div class="product-card__row">
+              <data class="product-card__price" value="200">Rs. 200</data>
+              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
+            </div>
+          </article>
+          </div>
+
+          <a class="carousel__arrow carousel__arrow--next" href="#coffee-4">
+            <svg class="icon carousel__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right" /></svg>
+            <span class="visually-hidden">Next coffee</span>
+          </a>
+        </div>
       </section>
 
       <section class="products" id="dessert" aria-labelledby="dessert-title">
-        <!-- T3: h2#dessert-title, product carousel (dessert) -->
+        <h2 class="products__title" id="dessert-title">Our Special Dessert</h2>
+
+        <div class="carousel">
+          <a class="carousel__arrow carousel__arrow--prev" href="#dessert-1">
+            <svg class="icon carousel__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-left" /></svg>
+            <span class="visually-hidden">Previous dessert</span>
+          </a>
+
+          <div class="carousel__track" role="group" aria-roledescription="carousel" aria-label="Special desserts" tabindex="0">
+          <article class="product-card carousel__item" id="dessert-1">
+            <div class="product-card__media">
+              <picture>
+                <source type="image/avif" srcset="assets/img/dessert-1.avif">
+                <source type="image/webp" srcset="assets/img/dessert-1.webp">
+                <img
+                  class="product-card__image"
+                  src="assets/img/dessert-1.jpg"
+                  width="334"
+                  height="364"
+                  alt="Top view of a cup of black coffee on a wooden tray among green leaves"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
+              <input class="product-card__fav-input visually-hidden" type="checkbox" id="dessert-1-fav">
+              <label class="product-card__fav" for="dessert-1-fav">
+                <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
+                <svg class="icon product-card__heart product-card__heart--on" aria-hidden="true" focusable="false"><use href="#icon-heart-filled" /></svg>
+                <span class="visually-hidden">Add Lungo coffee to favourites</span>
+              </label>
+            </div>
+            <h3 class="product-card__name">Lungo coffee</h3>
+            <p class="product-card__description">Strong, smooth and full of flavour.</p>
+            <div class="product-card__row">
+              <data class="product-card__price" value="200">Rs. 200</data>
+              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
+            </div>
+          </article>
+
+          <article class="product-card carousel__item" id="dessert-2">
+            <div class="product-card__media">
+              <picture>
+                <source type="image/avif" srcset="assets/img/dessert-2.avif">
+                <source type="image/webp" srcset="assets/img/dessert-2.webp">
+                <img
+                  class="product-card__image"
+                  src="assets/img/dessert-2.jpg"
+                  width="334"
+                  height="364"
+                  alt="Latte with a heart of milk foam in a maroon cup and saucer on a wooden table"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
+              <input class="product-card__fav-input visually-hidden" type="checkbox" id="dessert-2-fav">
+              <label class="product-card__fav" for="dessert-2-fav">
+                <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
+                <svg class="icon product-card__heart product-card__heart--on" aria-hidden="true" focusable="false"><use href="#icon-heart-filled" /></svg>
+                <span class="visually-hidden">Add Lungo coffee to favourites</span>
+              </label>
+            </div>
+            <h3 class="product-card__name">Lungo coffee</h3>
+            <p class="product-card__description">Strong, smooth and full of flavour.</p>
+            <div class="product-card__row">
+              <data class="product-card__price" value="200">Rs. 200</data>
+              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
+            </div>
+          </article>
+
+          <article class="product-card carousel__item" id="dessert-3">
+            <div class="product-card__media">
+              <picture>
+                <source type="image/avif" srcset="assets/img/dessert-3.avif">
+                <source type="image/webp" srcset="assets/img/dessert-3.webp">
+                <img
+                  class="product-card__image"
+                  src="assets/img/dessert-3.jpg"
+                  width="334"
+                  height="364"
+                  alt="Top view of a latte with a heart-shaped foam pattern on a dark starry background"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
+              <input class="product-card__fav-input visually-hidden" type="checkbox" id="dessert-3-fav">
+              <label class="product-card__fav" for="dessert-3-fav">
+                <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
+                <svg class="icon product-card__heart product-card__heart--on" aria-hidden="true" focusable="false"><use href="#icon-heart-filled" /></svg>
+                <span class="visually-hidden">Add Lungo coffee to favourites</span>
+              </label>
+            </div>
+            <h3 class="product-card__name">Lungo coffee</h3>
+            <p class="product-card__description">Strong, smooth and full of flavour.</p>
+            <div class="product-card__row">
+              <data class="product-card__price" value="200">Rs. 200</data>
+              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
+            </div>
+          </article>
+
+          <article class="product-card carousel__item" id="dessert-4">
+            <div class="product-card__media">
+              <picture>
+                <source type="image/avif" srcset="assets/img/dessert-4.avif">
+                <source type="image/webp" srcset="assets/img/dessert-4.webp">
+                <img
+                  class="product-card__image"
+                  src="assets/img/dessert-4.jpg"
+                  width="334"
+                  height="364"
+                  alt="Two lattes with leaf-shaped foam art on a wooden stool among plants"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
+              <input class="product-card__fav-input visually-hidden" type="checkbox" id="dessert-4-fav">
+              <label class="product-card__fav" for="dessert-4-fav">
+                <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
+                <svg class="icon product-card__heart product-card__heart--on" aria-hidden="true" focusable="false"><use href="#icon-heart-filled" /></svg>
+                <span class="visually-hidden">Add Lungo coffee to favourites</span>
+              </label>
+            </div>
+            <h3 class="product-card__name">Lungo coffee</h3>
+            <p class="product-card__description">Strong, smooth and full of flavour.</p>
+            <div class="product-card__row">
+              <data class="product-card__price" value="200">Rs. 200</data>
+              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
+            </div>
+          </article>
+          </div>
+
+          <a class="carousel__arrow carousel__arrow--next" href="#dessert-4">
+            <svg class="icon carousel__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right" /></svg>
+            <span class="visually-hidden">Next dessert</span>
+          </a>
+        </div>
       </section>
 
-      <section class="promo">
-        <!-- T3: CTA heading, button with chevron, decorative beans -->
+      <section class="promo" aria-labelledby="promo-title">
+        <picture class="promo__picture promo__picture--hand">
+          <source type="image/avif" srcset="assets/img/promo-hand.avif">
+          <source type="image/webp" srcset="assets/img/promo-hand.webp">
+          <img class="promo__image" src="assets/img/promo-hand.png" width="521" height="335" alt="" loading="lazy" decoding="async">
+        </picture>
+
+        <div class="promo__inner">
+          <h2 class="promo__title" id="promo-title">Check Out Our Best Coffee Beans</h2>
+          <a class="promo__cta" href="#coffee">
+            Explore Our Products
+            <svg class="icon promo__chevron" aria-hidden="true" focusable="false"><use href="#icon-chevron" /></svg>
+          </a>
+        </div>
+
+        <picture class="promo__picture promo__picture--beans">
+          <source type="image/avif" srcset="assets/img/promo-beans.avif">
+          <source type="image/webp" srcset="assets/img/promo-beans.webp">
+          <img class="promo__image" src="assets/img/promo-beans.png" width="503" height="335" alt="" loading="lazy" decoding="async">
+        </picture>
       </section>
 
       <section class="testimonials" aria-labelledby="testimonials-title">

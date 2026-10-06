@@ -1,3 +1,108 @@
-/* Promo CTA band: heading, button with chevron and decorative bean images. */
+/*
+ * Promo CTA band: heading, button with chevron and two decorative bean images.
+ * The images are positioned out of flow on purpose: they only decorate the sides of the band.
+ */
 @layer components {
+  .promo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-48) var(--space-16);
+    background-color: var(--color-sand);
+    overflow: hidden; /* scaled-down images can never cause horizontal page scroll */
+  }
+
+  /* Base: decorative images are hidden, text and button are centred. */
+  .promo__picture {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .promo__picture--hand {
+    left: 0;
+    width: var(--promo-hand-width);
+  }
+
+  .promo__picture--beans {
+    right: 0;
+    width: var(--promo-beans-width);
+  }
+
+  .promo__image {
+    width: 100%;
+  }
+
+  .promo__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-24);
+    text-align: center;
+  }
+
+  .promo__title {
+    max-width: var(--promo-text-width);
+    color: var(--color-black);
+    font-size: var(--fs-cta);
+    line-height: var(--lh-cta);
+  }
+
+  .promo__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-8);
+    min-width: var(--promo-cta-width);
+    min-height: var(--promo-cta-height);
+    padding: var(--space-12) var(--space-24);
+    border-radius: var(--radius-pill);
+    background-color: var(--color-espresso);
+    color: var(--color-bg);
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    font-weight: var(--fw-medium);
+    line-height: var(--lh-base);
+    transition:
+      background-color var(--transition-base),
+      transform var(--transition-base);
+  }
+
+  .promo__chevron {
+    font-size: var(--size-icon-chevron);
+  }
+
+  @media (hover: hover) {
+    .promo__cta:hover {
+      background-color: var(--color-muted);
+      transform: translateY(-2px);
+    }
+  }
+
+  /* ---------- md: reduced hand image on the left, content centred in the rest ---------- */
+  @media (min-width: 48em) {
+    .promo {
+      padding-inline: var(--promo-hand-width) var(--space-32);
+    }
+
+    .promo__picture--hand {
+      display: block;
+    }
+  }
+
+  /* ---------- lg and xl: both images, 335px band ---------- */
+  @media (min-width: 64em) {
+    .promo {
+      min-height: var(--promo-height);
+      padding-block: 0;
+      padding-inline: var(--promo-hand-width) var(--promo-beans-width);
+    }
+
+    .promo__picture--beans {
+      display: block;
+    }
+  }
 }
