@@ -1,0 +1,26 @@
+/* Layout layer: page container (PRD section 7). */
+@layer layout {
+  /*
+   * Mobile-first container: viewport minus a gutter on each side, capped at --container.
+   * Gutter: 16px base, 32px from 768px, 48px from 1024px. From 1440px the cap (1444px)
+   * applies as soon as the viewport is wide enough to hold it plus the gutters.
+   */
+  .container {
+    --gutter: var(--space-16);
+
+    width: min(100% - 2 * var(--gutter), var(--container));
+    margin-inline: auto;
+  }
+
+  @media (min-width: 48em) {
+    .container {
+      --gutter: var(--space-32);
+    }
+  }
+
+  @media (min-width: 64em) {
+    .container {
+      --gutter: var(--space-48);
+    }
+  }
+}

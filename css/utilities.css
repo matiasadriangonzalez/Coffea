@@ -1,0 +1,48 @@
+/* Utilities layer: accessibility helpers and the inline icon primitive. */
+@layer utilities {
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  /* Hidden off-screen until it receives keyboard focus. */
+  .skip-link {
+    position: absolute;
+    top: var(--space-8);
+    left: var(--space-8);
+    z-index: var(--z-skip-link);
+    padding: var(--space-12) var(--space-24);
+    border-radius: var(--radius-btn);
+    background-color: var(--color-espresso);
+    color: var(--color-white);
+    font-family: var(--font-ui);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    transform: translateY(-200%);
+    --focus-color: var(--color-white);
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  /*
+   * Inline SVG icon taken from the sprite:
+   * <svg class="icon" aria-hidden="true"><use href="#icon-search"/></svg>
+   * Sized in em and coloured with currentColor, so font-size and color drive it.
+   */
+  .icon {
+    display: inline-block;
+    flex: none;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+  }
+}
