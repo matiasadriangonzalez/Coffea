@@ -1,0 +1,57 @@
+/* Not found (404) page: a short message and a way back home. */
+@layer components {
+  .not-found {
+    display: grid;
+    align-items: center;
+    min-height: 60vh;
+    padding-block: var(--space-96);
+  }
+
+  .not-found__inner {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-16);
+  }
+
+  .not-found__code {
+    font-family: var(--font-accent);
+    font-size: var(--fs-hero);
+    line-height: var(--lh-hero);
+  }
+
+  .not-found__title {
+    font-size: var(--fs-h2);
+    letter-spacing: var(--tracking-h2);
+  }
+
+  .not-found__text {
+    max-width: var(--hero-text-width);
+    margin-bottom: var(--space-16);
+    font-size: var(--fs-md);
+    line-height: var(--lh-text);
+  }
+
+  .not-found__cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-target);
+    padding: var(--space-16) var(--space-40);
+    border-radius: var(--radius-pill);
+    background-color: var(--color-espresso);
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-medium);
+    line-height: var(--lh-base);
+    transition:
+      background-color var(--transition-base),
+      transform var(--transition-base);
+  }
+
+  @media (hover: hover) {
+    .not-found__cta:hover {
+      background-color: var(--color-maroon);
+      transform: translateY(-2px);
+    }
+  }
+}

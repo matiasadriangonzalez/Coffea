@@ -1,0 +1,22 @@
+# Netlify configuration: static site, no build step (plain HTML + CSS).
+[build]
+  publish = "."
+
+# Security headers for every path.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Long-lived cache. Changed files must be renamed (e.g. main.v2.css), see README.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
