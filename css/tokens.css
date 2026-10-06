@@ -118,6 +118,25 @@
     --promo-cta-width: 16.125rem; /* 258px */
     --promo-cta-height: 3.1875rem; /* 51px */
 
+    /* ---------- Testimonials (PRD 5.7) ---------- */
+    --testimonial-width: 26.0625rem; /* 417px: side cards */
+    --testimonial-height: 12.9375rem; /* 207px */
+    --testimonial-featured-width: 27.5625rem; /* 441px: central card */
+    --testimonial-featured-height: 14.6875rem; /* 235px */
+    --size-avatar: 3.5rem; /* 56px */
+    --size-star: 1.125rem; /* 18px */
+    --size-dot: 0.75rem; /* 12px: pager dot */
+
+    /* ---------- Newsletter (PRD 5.8) ---------- */
+    --newsletter-height: 20rem; /* 320px */
+    --newsletter-beans-width: min(30.125rem, 25vw); /* 482px natural width, scaled down on narrow screens */
+    --newsletter-form-width: 28rem; /* 448px: cap for the stacked form on wide phones */
+    --input-width: 22.75rem; /* 364px */
+
+    /* ---------- Footer (PRD 5.9) ---------- */
+    --footer-height: 22.375rem; /* 358px */
+    --footer-link-step: 2.625rem; /* 42px: vertical rhythm of the links */
+
     /* ---------- Spacing (named after their pixel value at 16px root) ---------- */
     --space-4: 0.25rem;
     --space-8: 0.5rem;

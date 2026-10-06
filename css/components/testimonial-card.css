@@ -1,3 +1,261 @@
-/* Testimonial card, rating stars, section heading and pager dots. */
+/*
+ * Testimonials section: two-line heading, a CSS-only scroller of testimonial cards and a dot pager.
+ *
+ * The track is a native scroll container (swipe, trackpad, keyboard) with scroll snapping, the same
+ * technique as the product carousel. Cards are sized from the track width, so how many are on screen
+ * is a per-breakpoint decision: 1 (the next one peeks) on base, 2 from md, all 3 from lg.
+ * The pager dots are plain anchors to each card (no JavaScript).
+ */
 @layer components {
+  .testimonials {
+    --testimonials-pad: var(--space-48); /* section padding, top and bottom */
+    --testimonials-title-gap: var(--space-32);
+
+    padding-block: var(--testimonials-pad);
+    background-color: var(--color-bg);
+  }
+
+  /* Two lines, both 32px: the accent face on top, the uppercase serif below. */
+  .testimonials__title {
+    margin-bottom: var(--testimonials-title-gap);
+    padding-inline: var(--space-16);
+    color: var(--color-espresso);
+    font-size: var(--fs-h2);
+    line-height: var(--lh-tight);
+    text-align: center;
+  }
+
+  .testimonials__title-accent,
+  .testimonials__title-main {
+    display: block;
+  }
+
+  .testimonials__title-accent {
+    font-family: var(--font-accent);
+    font-weight: var(--fw-regular);
+  }
+
+  .testimonials__title-main {
+    font-family: var(--font-display);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--tracking-h2);
+    text-transform: uppercase;
+  }
+
+  /* ---------- Base: one card, the next one peeks ---------- */
+
+  .testimonials__track {
+    --testimonial-gap: var(--space-16);
+    --testimonial-visible: 1.12; /* cards on screen, the fraction lets the next card peek */
+    --testimonial-gaps: 1; /* gaps that fit in the track at that number of cards */
+    --testimonial-pad: var(--space-16); /* side padding, aligned with the page gutter */
+
+    /* Positioned so the visually hidden labels of the cards are contained and scroll with them. */
+    position: relative;
+    display: flex;
+    gap: var(--testimonial-gap);
+    padding-inline: var(--testimonial-pad);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--testimonial-pad);
+    scrollbar-width: none;
+  }
+
+  .testimonials__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* The track is the scroll container, so its ring is drawn inside to stay on screen. */
+  .testimonials__track:focus-visible {
+    outline-offset: calc(var(--focus-width) * -1);
+  }
+
+  /* ---------- Card ---------- */
+
+  /*
+   * The margin below equals the space above the card (section padding + two title lines + gap), so an
+   * anchor jump leaves the section top at the viewport top, like the arrows of the product carousels.
+   */
+  .testimonial-card {
+    display: flex;
+    flex: 0 0 calc((100% - var(--testimonial-gaps) * var(--testimonial-gap)) / var(--testimonial-visible));
+    flex-direction: column;
+    gap: var(--space-16);
+    max-width: var(--testimonial-featured-width); /* never wider than the design on wide phones */
+    padding: var(--space-28);
+    border: var(--border-width) solid var(--color-border-soft);
+    border-radius: var(--radius-card);
+    background-color: var(--color-sand-40);
+    scroll-margin-block-start: calc(
+      var(--testimonials-pad) + 2 * var(--fs-h2) * var(--lh-tight) + var(--testimonials-title-gap)
+    );
+    scroll-snap-align: start;
+  }
+
+  /* Header: avatar on the left, then a meta box with the author and the rating. */
+  .testimonial-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-12);
+  }
+
+  /*
+   * Author on the left, rating on the right. When the card is too narrow for both on one line
+   * (phones, laptops under 1250px) the rating wraps under the name, no media query involved.
+   */
+  .testimonial-card__meta {
+    display: flex;
+    flex: 1 1 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4) var(--space-12);
+    min-width: 0;
+  }
+
+  .testimonial-card__picture {
+    flex: none;
+  }
+
+  .testimonial-card__avatar {
+    width: var(--size-avatar);
+    height: var(--size-avatar);
+    border-radius: var(--radius-round);
+    object-fit: cover;
+  }
+
+  .testimonial-card__name {
+    font-family: var(--font-ui);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-semibold);
+    line-height: var(--lh-tight);
+  }
+
+  .testimonial-card__role {
+    color: var(--color-text-soft);
+    font-family: var(--font-ui);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    line-height: var(--lh-base);
+  }
+
+  /* Five stars: filled ones use the star colour, the rest the empty one. The value is in aria-label. */
+  .testimonial-card__rating {
+    display: flex;
+    gap: var(--space-4);
+    font-size: var(--size-star);
+    line-height: 1;
+  }
+
+  .testimonial-card__star {
+    color: var(--color-star);
+  }
+
+  .testimonial-card__star--empty {
+    color: var(--color-star-empty);
+  }
+
+  .testimonial-card__quote {
+    font-family: var(--font-ui);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    line-height: var(--lh-quote);
+  }
+
+  /* ---------- Pager ---------- */
+
+  .testimonials__pager {
+    margin-top: var(--space-8);
+  }
+
+  .testimonials__dots {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* The link is the 44px touch target; the dot is drawn by its pseudo-element. */
+  .testimonials__dot {
+    display: grid;
+    place-items: center;
+    width: var(--tap-target);
+    height: var(--tap-target);
+    /* The focus ring is drawn around the dot (below), not around the whole touch target. */
+    outline-color: transparent;
+  }
+
+  .testimonials__dot::before {
+    content: "";
+    width: var(--size-dot);
+    height: var(--size-dot);
+    border-radius: var(--radius-round);
+    background-color: var(--color-text-soft);
+    transition: background-color var(--transition-base);
+  }
+
+  .testimonials__dot:focus-visible::before {
+    background-color: var(--color-espresso);
+    outline: var(--focus-width) solid var(--focus-color);
+    outline-offset: var(--focus-offset);
+  }
+
+  @media (hover: hover) {
+    .testimonials__dot:hover::before {
+      background-color: var(--color-espresso);
+    }
+  }
+
+  /* ---------- md: two cards ---------- */
+  @media (min-width: 48em) {
+    .testimonials__track {
+      --testimonial-visible: 2;
+      --testimonial-pad: var(--space-32);
+    }
+
+    .testimonials__title {
+      padding-inline: var(--space-32);
+    }
+  }
+
+  /*
+   * ---------- lg: the three cards fit, the central one is featured ----------
+   * Cards share the track width (the featured one grows a little faster) up to their design size,
+   * and the track stops being a scroller in practice. The pager is then visual only: the middle dot
+   * marks the featured card and the touch targets shrink, since pointer users do not need the 44px.
+   */
+  @media (min-width: 64em) {
+    .testimonials__track {
+      --testimonial-gap: var(--space-24);
+
+      /* The page container, not full bleed: the cards sit centred in the same column as the other sections. */
+      width: min(100% - 2 * var(--space-48), var(--container));
+      align-items: center;
+      justify-content: center;
+      margin-inline: auto;
+      padding-inline: 0;
+      scroll-padding-inline: 0;
+    }
+
+    .testimonial-card {
+      flex: 1 1 0;
+      min-width: 0;
+      max-width: var(--testimonial-width);
+      min-height: var(--testimonial-height);
+    }
+
+    .testimonial-card--featured {
+      flex-grow: 1.0575; /* 441 / 417 */
+      max-width: var(--testimonial-featured-width);
+      min-height: var(--testimonial-featured-height);
+    }
+
+    .testimonials__dot {
+      width: var(--size-icon);
+      height: var(--size-icon);
+    }
+
+    .testimonials__dots li:nth-child(2) .testimonials__dot::before {
+      background-color: var(--color-espresso);
+    }
+  }
 }
