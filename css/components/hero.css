@@ -1,3 +1,163 @@
 /* Hero section: background picture, scrim, eyebrow, H1, paragraph and call-to-action button. */
 @layer components {
+  .hero {
+    --focus-color: var(--color-white);
+
+    position: relative;
+    isolation: isolate;
+    min-height: var(--hero-min-height);
+    overflow: hidden;
+    background-color: var(--color-espresso);
+    color: var(--color-white);
+  }
+
+  /* ---------- Background photo + scrim ---------- */
+  .hero__media {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .hero__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 80% 50%; /* keeps the cup in view when the photo is cropped */
+  }
+
+  /* Scrim: guarantees AA contrast for white text over the photo (the cup and foam are bright). */
+  .hero__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-overlay);
+  }
+
+  /* ---------- Text block ---------- */
+  .hero__inner {
+    padding-top: calc(var(--space-96) + var(--space-32)); /* clears the header */
+    padding-bottom: var(--space-64);
+  }
+
+  .hero__content {
+    max-width: var(--hero-content-width);
+  }
+
+  .hero__eyebrow {
+    margin-bottom: var(--space-16);
+    font-family: var(--font-body);
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-medium);
+    line-height: var(--lh-base);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+  }
+
+  .hero__title {
+    margin-bottom: var(--space-24);
+    font-size: var(--fs-hero);
+    font-weight: var(--fw-bold);
+    line-height: var(--lh-hero);
+  }
+
+  .hero__text {
+    max-width: var(--hero-text-width);
+    margin-bottom: var(--space-32);
+    font-family: var(--font-body);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-regular);
+    line-height: var(--lh-text);
+  }
+
+  .hero__cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-target);
+    padding: var(--space-16) var(--space-40);
+    border-radius: var(--radius-pill);
+    background-color: var(--color-white);
+    color: var(--color-espresso);
+    font-family: var(--font-body);
+    font-size: var(--fs-md);
+    font-weight: var(--fw-medium);
+    line-height: var(--lh-base);
+    transition:
+      background-color var(--transition-base),
+      transform var(--transition-base);
+  }
+
+  @media (hover: hover) {
+    .hero__cta:hover {
+      background-color: var(--color-sand);
+      transform: translateY(-2px);
+    }
+  }
+
+  /* ---------- Tablet: a little more room between the blocks ---------- */
+  @media (min-width: 48em) {
+    .hero__eyebrow {
+      margin-bottom: var(--space-24);
+    }
+
+    .hero__title {
+      margin-bottom: var(--space-32);
+    }
+
+    .hero__text {
+      margin-bottom: var(--space-40);
+    }
+  }
+
+  /* ---------- Desktop: 1000px hero, text block at 294px from the top ---------- */
+  @media (min-width: 64em) {
+    .hero {
+      min-height: var(--hero-height);
+    }
+
+    /* The scrim stays solid behind the text block (about 60% of the width at 1024px), then fades out. */
+    .hero__media::after {
+      background-image: linear-gradient(
+        90deg,
+        var(--color-overlay) 60%,
+        var(--color-overlay-clear) 90%
+      );
+      background-color: transparent;
+    }
+
+    /* Top band: keeps the white nav links readable where beans and cookies sit behind them. */
+    .hero__media::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: var(--hero-header-scrim);
+      background-image: linear-gradient(180deg, var(--color-overlay), var(--color-overlay-clear));
+    }
+
+    .hero__inner {
+      padding-top: calc(var(--hero-height) * var(--hero-content-ratio));
+    }
+
+    .hero__eyebrow {
+      margin-bottom: var(--space-40);
+    }
+
+    .hero__title {
+      margin-bottom: var(--space-56);
+    }
+
+    .hero__text {
+      margin-bottom: var(--space-56);
+    }
+  }
+
+  /* Wide screens: the text block takes a smaller share of the width, so the photo shows more. */
+  @media (min-width: 90em) {
+    .hero__media::after {
+      background-image: linear-gradient(
+        90deg,
+        var(--color-overlay) 45%,
+        var(--color-overlay-clear) 85%
+      );
+    }
+  }
 }

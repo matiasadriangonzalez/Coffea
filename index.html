@@ -68,23 +68,124 @@
     <a class="skip-link" href="#main">Skip to main content</a>
 
     <header class="header">
-      <!-- T2: logo, primary nav (details/summary menu on mobile), search button -->
+      <div class="header__inner container">
+        <a class="header__logo" href="/">coffea</a>
+
+        <!-- Desktop navigation (from 1024px). Hidden with display: none below that. -->
+        <nav class="header__nav" aria-label="Main">
+          <ul class="header__list">
+            <li><a class="header__link" href="#">home</a></li>
+            <li><a class="header__link" href="#">coffee</a></li>
+            <li><a class="header__link" href="#">bakery</a></li>
+            <li><a class="header__link" href="#">shop</a></li>
+            <li><a class="header__link" href="#">about</a></li>
+            <li><a class="header__link header__link--login" href="#">login</a></li>
+          </ul>
+        </nav>
+
+        <button class="header__search" type="button" aria-label="Search">
+          <svg class="icon header__search-icon" aria-hidden="true" focusable="false"><use href="#icon-search" /></svg>
+        </button>
+
+        <!--
+          Mobile menu (below 1024px): CSS-only disclosure widget. A closed details element cannot be
+          forced open by CSS in every target browser, so it owns a second nav and the desktop nav above
+          is the one hidden here (display: none keeps the inactive nav out of the accessibility tree).
+        -->
+        <details class="header__menu">
+          <summary class="header__toggle">
+            <span class="visually-hidden">Menu</span>
+            <span class="header__toggle-icon" aria-hidden="true"></span>
+          </summary>
+          <nav class="header__panel" aria-label="Main mobile">
+            <ul class="header__list header__list--panel">
+              <li><a class="header__link" href="#">home</a></li>
+              <li><a class="header__link" href="#">coffee</a></li>
+              <li><a class="header__link" href="#">bakery</a></li>
+              <li><a class="header__link" href="#">shop</a></li>
+              <li><a class="header__link" href="#">about</a></li>
+              <li><a class="header__link header__link--login" href="#">login</a></li>
+            </ul>
+          </nav>
+        </details>
+      </div>
     </header>
 
     <main id="main">
       <section class="hero" aria-labelledby="hero-title">
-        <!-- T2: hero picture, scrim, eyebrow, h1#hero-title, paragraph, CTA -->
+        <picture class="hero__media">
+          <source
+            type="image/avif"
+            srcset="assets/img/hero-768.avif 768w, assets/img/hero-1280.avif 1280w, assets/img/hero-1920.avif 1920w"
+            sizes="(min-width: 64em) 100vw, 1280px"
+          >
+          <source
+            type="image/webp"
+            srcset="assets/img/hero-768.webp 768w, assets/img/hero-1280.webp 1280w, assets/img/hero-1920.webp 1920w"
+            sizes="(min-width: 64em) 100vw, 1280px"
+          >
+          <img
+            class="hero__image"
+            src="assets/img/hero-1280.jpg"
+            srcset="assets/img/hero-768.jpg 768w, assets/img/hero-1280.jpg 1280w, assets/img/hero-1920.jpg 1920w"
+            sizes="(min-width: 64em) 100vw, 1280px"
+            width="1920"
+            height="1000"
+            alt=""
+            fetchpriority="high"
+            decoding="async"
+          >
+        </picture>
+
+        <div class="hero__inner container">
+          <div class="hero__content">
+            <p class="hero__eyebrow">Welcome</p>
+            <h1 class="hero__title" id="hero-title">We serve the richest coffee in the city!</h1>
+            <p class="hero__text">
+              Freshly roasted beans, brewed with care and served with a smile. Stop by for your daily cup
+              and find your new favourite blend.
+            </p>
+            <a class="hero__cta" href="#coffee">Order Now</a>
+          </div>
+        </div>
       </section>
 
       <section class="categories" aria-label="Categories">
-        <!-- T2: four category links (Hot Coffee, Cold Coffee, Cup Coffee, Dessert) -->
+        <div class="categories__inner container">
+          <ul class="categories__list">
+            <li>
+              <a class="categories__link" href="#coffee">
+                <svg class="icon categories__icon" aria-hidden="true" focusable="false"><use href="#icon-cat-hot-coffee" /></svg>
+                <span class="categories__label">Hot Coffee</span>
+              </a>
+            </li>
+            <li>
+              <a class="categories__link" href="#coffee">
+                <svg class="icon categories__icon" aria-hidden="true" focusable="false"><use href="#icon-cat-cold-coffee" /></svg>
+                <span class="categories__label">Cold Coffee</span>
+              </a>
+            </li>
+            <li>
+              <a class="categories__link" href="#coffee">
+                <svg class="icon categories__icon" aria-hidden="true" focusable="false"><use href="#icon-cat-cup-coffee" /></svg>
+                <span class="categories__label">Cup Coffee</span>
+              </a>
+            </li>
+            <li>
+              <a class="categories__link" href="#dessert">
+                <svg class="icon categories__icon" aria-hidden="true" focusable="false"><use href="#icon-cat-dessert" /></svg>
+                <span class="categories__label">Dessert</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </section>
 
-      <section class="products" aria-labelledby="coffee-title">
+      <section class="products" id="coffee" aria-labelledby="coffee-title">
         <!-- T3: h2#coffee-title, product carousel (coffee) -->
       </section>
 
-      <section class="products" aria-labelledby="dessert-title">
+      <section class="products" id="dessert" aria-labelledby="dessert-title">
         <!-- T3: h2#dessert-title, product carousel (dessert) -->
       </section>
 

@@ -25,7 +25,8 @@
     --color-star-empty: #cecece;
 
     /* Hero image scrim so white text keeps AA contrast (tune in the hero task). */
-    --color-overlay: rgb(0 0 0 / 0.35);
+    --color-overlay: rgb(0 0 0 / 0.6);
+    --color-overlay-clear: rgb(0 0 0 / 0);
 
     /* Native form validation (:user-invalid). */
     --color-error: #b3261e;
@@ -76,6 +77,23 @@
     /* ---------- Layout ---------- */
     --container: 90.25rem; /* 1444px */
     --header-top: 3.4375rem; /* 55px: header offset from the top of the hero */
+    --hero-height: min(100vh, 62.5rem); /* hero height from lg: viewport height capped at 1000px */
+    --hero-min-height: 40rem; /* 640px: hero height on base and md */
+    --hero-content-ratio: 0.294; /* 294px of 1000px: top offset of the hero text block */
+    --hero-header-scrim: 14rem; /* 224px: height of the dark band behind the desktop nav */
+    --hero-content-width: 34.8125rem; /* 557px */
+    --hero-text-width: 26.9375rem; /* 431px: hero paragraph max width */
+    --categories-height: 13.75rem; /* 220px */
+    --categories-row: 52.8125rem; /* 845px */
+
+    /* ---------- Controls ---------- */
+    --tap-target: 2.75rem; /* 44px: minimum touch target on base and md */
+    --size-control: 3rem; /* 48px: round icon buttons on base and md */
+    --size-control-lg: 3.8125rem; /* 61px: search button from lg */
+    --size-icon: 1.5rem; /* 24px */
+    --size-icon-lg: 1.6875rem; /* 27px */
+    --size-icon-category: 5.125rem; /* 82px */
+    --border-width: 0.125rem; /* 2px */
 
     /* ---------- Spacing (named after their pixel value at 16px root) ---------- */
     --space-4: 0.25rem;
