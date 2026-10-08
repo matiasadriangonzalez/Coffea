@@ -167,9 +167,10 @@
   }
 
   @media (min-width: 64em) and (hover: hover) {
-    .carousel__arrow--link:hover {
-      background-color: var(--color-espresso);
-      color: var(--color-bg);
+    /* Hover shows a deeper beige on the real links and on their decorative twins alike. */
+    .carousel__arrow--link:hover,
+    .carousel__arrow--static:hover {
+      background-color: var(--color-sand-strong);
     }
   }
 
