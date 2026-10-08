@@ -8,6 +8,7 @@ Static one-page landing for the fictional coffee shop **Coffea** (UADER, UX-UI 2
 
 - HTML5 + CSS3 only. **No JavaScript**, frameworks, preprocessors or build step.
 - All interactions are CSS-only: hover/focus states, scroll-snap carousels, favourite hearts (checkbox), mobile menu (`<details>`), testimonial pager (anchors).
+- Copy, sizes and positions replicate the Figma design (1920 px frame); the layout was measured against it at 1920 px.
 - Accessibility target: WCAG 2.2 AA (skip link, landmarks, keyboard navigation, visible focus, reduced motion).
 - Language: English (`lang="en"`).
 
@@ -25,7 +26,7 @@ Static one-page landing for the fictional coffee shop **Coffea** (UADER, UX-UI 2
 │   ├── layout.css        .container
 │   ├── components/       header, hero, categories, product-card, carousel,
 │   │                     promo, testimonial-card, newsletter, footer, not-found
-│   └── utilities.css     .visually-hidden, .skip-link, helpers
+│   └── utilities.css     .visually-hidden / .sr-only, .skip-link, .sprite, .icon
 ├── assets/
 │   ├── img/              AVIF + WebP + JPG/PNG fallbacks
 │   ├── icons/            Optimised SVG sources (the pages use the inline sprite)
@@ -91,6 +92,7 @@ CHROME_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
 - Deliverables are generated into `assets/img/`: AVIF and WebP plus a JPG (photos) or PNG (transparent art) fallback, served through `<picture>` with explicit `width`/`height`. The hero ships in 768, 1280 and 1920 px widths.
 - Icons are optimised with SVGO; `index.html` and `404.html` embed them as an inline `<symbol>` sprite and reference them with `<use>`.
 - Fonts (Outfit, Playfair Display, Poppins, Reggae One) are self-hosted as latin woff2 in `assets/fonts/`, declared in `css/tokens.css` with `font-display: swap`. Outfit, Playfair Display and Poppins 500 are preloaded.
+- **2x / retina photos are pending.** The sources in `media/` are 1x, so `assets/img/` has no real 2x variants (only the avatar has a 2x file). A Figma export at 2x is needed before adding `srcset` densities.
 
 ## Deploy to Netlify
 
@@ -117,17 +119,30 @@ Target: Chrome / Edge, Firefox (latest 2), Safari macOS / iOS 16+, Samsung Inter
 | Browser | Status |
 | --- | --- |
 | Chrome (desktop) | Checked during development |
-| Firefox, Safari macOS, Safari iOS, Samsung Internet | **Pending: needs a manual check** |
+| Safari macOS and iOS | **Pending: needs a manual check** (available to the author) |
+| Firefox, Samsung Internet | **Pending: needs a manual check** (no device or install available to the author) |
 | Real iOS and Android devices | **Pending: needs a manual check** |
+
+## Deliberate deviations from the design / PRD
+
+| Deviation | Why |
+| --- | --- |
+| Self-hosted woff2 fonts instead of the Google Fonts preconnect from the PRD | No third-party request, better LCP, no privacy impact. |
+| UI strings are English, including `aria-label`s ("Main", "Search") and the skip link | The page declares `lang="en"`. |
+| Product card frame is an inset outline | Keeps the card box at the exact 366 px of the design. |
+| Only the centre testimonial card has a frame from 1024 px | The side cards of the Figma have none (below 1024 px all cards are framed). |
+| Social icons sit in a 36 x 44 px slot from 1024 px | Matches the Figma x positions (36 px pitch). WCAG 2.2 AA needs 24 px; the PRD says 44 px. Change `--size-social-slot` in `css/tokens.css` to restore 44 px. |
+| Carousel cards reach the 366 x 570 px design size only at about 1812 px and up | Cards share the track width; below that they shrink to fit four per row. |
+| The container is 1344 px wide at a 1440 px viewport | The 1444 px design container cannot fit next to the gutters there; it is 1444 px from 1540 px up. |
 
 ## Open decisions / known limitations
 
 - **Photo licence:** the stock photos (istockphoto) come from a Figma Community template; confirm the licence or replace them before publishing.
 - **Currency:** prices read "Rs. 200" as in the design; decide whether to switch to `$` or another currency.
-- **Placeholder copy:** hero paragraph, product name/description/price ("Lungo coffee", "Rs. 200", reused for desserts), testimonials ("James Smith" and lorem ipsum, one avatar reused), newsletter title ("Subscribe to our newsletter"), and footer link texts other than "Explore Our Products", "Our story", "Plans & pricing" and "Sell your products". Nav and footer links are `#` placeholders.
-- **Dessert photos** are coffee photos (as in the Figma).
+- **Placeholders kept on purpose** to replicate the design: the Figma's own lorem ipsum (product descriptions, testimonial quotes), the product name "Lungo coffee" and price "Rs. 200" (reused for desserts), and the coffee photos in the dessert section. All other copy is the Figma's. Nav and footer links are `#` placeholders.
 - **Contrast:** the filled star (`#FFB921`) on the sand card is about 1.4:1 and filled vs empty stars about 1.1:1 (the design's own colour; the rating is also exposed through `aria-label`). The borderless newsletter input against the sand band is about 1.2:1 (below 3:1 for non-text UI). Decide whether to darken them.
-- **Carousel arrows** are visual-only from 1280 px, where all four cards fit (add a fifth card or hide them).
+- **Carousel arrows** are real anchors from 1024 to 1279 px (three cards fit, so they scroll). From 1280 px all four cards fit, so they are replaced by `aria-hidden` decorative copies (same look and position, not focusable). Add a fifth card and the links would need to be shown at those widths again.
+- **Pager dots** (12 px, 20 px hit area) fail Lighthouse's `target-size` audit on the desktop profile (accessibility 97). The size is the design's; widening the hit area to 24 px would need the dots spaced further apart than in the design.
 - **Mobile menu** does not close when a link is clicked (that needs JavaScript); the page links are placeholders anyway.
 - **Testimonial pager** dots show no active state (needs JavaScript or scroll-driven animations).
 - **Ratings** (4/5/3 stars) were assigned arbitrarily; the Figma did not make the mapping clear.
