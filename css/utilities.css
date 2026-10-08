@@ -1,6 +1,8 @@
 /* Utilities layer: accessibility helpers and the inline icon primitive. */
 @layer utilities {
-  .visually-hidden {
+  /* `.sr-only` is the PRD's name for the same helper; one rule serves both. */
+  .visually-hidden,
+  .sr-only {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -10,6 +12,11 @@
     overflow: hidden;
     clip-path: inset(50%);
     white-space: nowrap;
+  }
+
+  /* The inline SVG sprite: <use> reads its symbols, but nothing of it is rendered or announced. */
+  .sprite {
+    display: none;
   }
 
   /* Hidden off-screen until it receives keyboard focus. */
