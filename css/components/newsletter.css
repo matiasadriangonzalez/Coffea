@@ -162,6 +162,10 @@
     .newsletter__field {
       width: var(--input-width);
     }
+
+    .newsletter__button {
+      min-width: var(--newsletter-button-width);
+    }
   }
 
   /*

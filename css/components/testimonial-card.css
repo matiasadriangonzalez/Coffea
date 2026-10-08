@@ -142,7 +142,7 @@
     color: var(--color-text-soft);
     font-family: var(--font-ui);
     font-size: var(--fs-sm);
-    font-weight: var(--fw-medium);
+    font-weight: var(--fw-semibold);
     line-height: var(--lh-base);
   }
 
@@ -308,8 +308,14 @@
       align-items: flex-start;
     }
 
+    /* The name sits 1px and the role 3px lower than their natural spot in the design (centred pair). */
     .testimonial-card__author {
       align-self: center;
+      padding-block-start: var(--space-4);
+    }
+
+    .testimonial-card__role {
+      margin-block-start: var(--space-2);
     }
 
     .testimonial-card__rating {

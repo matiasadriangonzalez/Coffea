@@ -151,7 +151,9 @@
 
     /* Fluid between 1024px (19px) and 1440px (24px) so six columns fit a laptop without wrapping. */
     .footer__heading {
-      margin-bottom: var(--space-20);
+      /* The heading text sits 2px lower than its box in the design; the margin gives the 2px back. */
+      padding-block-start: var(--space-2);
+      margin-bottom: calc(var(--space-20) - var(--space-2));
       font-size: clamp(var(--fs-md), 0.42rem + 1.2vw, var(--fs-footer-h));
     }
 

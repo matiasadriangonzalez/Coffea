@@ -73,7 +73,7 @@
     display: inline-flex;
     align-items: center;
     min-height: var(--tap-target);
-    padding: var(--space-16) var(--space-40);
+    padding: var(--space-14) var(--space-40); /* 27px line + 28px = the 55px button of the design */
     border-radius: var(--radius-pill);
     background-color: var(--color-white);
     color: var(--color-espresso);
