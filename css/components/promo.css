@@ -1,6 +1,8 @@
 /*
  * Promo CTA band: heading, button with chevron and two decorative bean images.
- * The images are positioned out of flow on purpose: they only decorate the sides of the band.
+ * From md the band is a grid (hand | text [| beans]) and the images are in normal flow: the band is as
+ * tall as the photos, which therefore touch its top and bottom edges at every width. If the text is ever
+ * taller than the photos the band grows and the photos are cropped (object-fit: cover), never letterboxed.
  */
 @layer components {
   .promo {
@@ -16,27 +18,18 @@
   /* Base: decorative images are hidden, text and button are centred. */
   .promo__picture {
     display: none;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    align-self: stretch; /* the band is centred, the photos are not */
   }
 
-  .promo__picture--hand {
-    left: 0;
-    width: var(--promo-hand-width);
-  }
-
-  .promo__picture--beans {
-    right: 0;
-    width: var(--promo-beans-width);
-  }
-
+  /* The photo fills its grid cell, so it is exactly as tall as the band. */
   .promo__image {
+    display: block;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .promo__inner {
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -85,25 +78,31 @@
   /* ---------- md: reduced hand image on the left, content centred in the rest ---------- */
   @media (min-width: 48em) {
     .promo {
-      padding-inline: var(--promo-hand-width) var(--space-32);
+      display: grid;
+      grid-template-columns: var(--promo-hand-width-md) minmax(0, 1fr);
+      padding: 0;
     }
 
     .promo__picture--hand {
       display: block;
     }
+
+    .promo__inner {
+      justify-self: center;
+      padding-block: var(--space-16);
+      padding-inline-end: var(--space-32);
+    }
   }
 
   /*
-   * ---------- lg and xl: both images, 335px band, text block left-aligned ----------
+   * ---------- lg and xl: both images, text block left-aligned ----------
    * The block starts one gap after the hand image (x=608 at 1920px) and keeps clear of the beans.
+   * At 1920px the beans are 503x335, which sets the 335px band; below that the band shrinks with them.
    */
   @media (min-width: 64em) {
     .promo {
-      justify-content: flex-start;
+      grid-template-columns: var(--promo-hand-width) minmax(0, 1fr) var(--promo-beans-width);
       margin-block-start: var(--space-64); /* page background between the dessert cards and the band */
-      min-height: var(--promo-height);
-      padding-block: 0;
-      padding-inline: calc(var(--promo-hand-width) + var(--promo-gap)) var(--promo-beans-width);
     }
 
     .promo__picture--beans {
@@ -112,6 +111,9 @@
 
     .promo__inner {
       align-items: flex-start;
+      justify-self: start;
+      padding-block: 0;
+      padding-inline: var(--promo-gap) 0;
       text-align: start;
     }
 

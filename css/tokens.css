@@ -172,8 +172,8 @@
     --arrow-inset-xl: 5rem; /* 80px from the viewport edge at 1920px */
 
     /* ---------- Promo CTA (PRD 5.6) ---------- */
-    --promo-height: 20.9375rem; /* 335px */
     --promo-hand-width: min(32.5rem, 28vw); /* 520px, scaled down on narrow screens */
+    --promo-hand-width-md: min(32.5rem, 40vw); /* md: wider than the lg hand so it needs little cropping next to the text */
     --promo-beans-width: min(31.4375rem, 27vw); /* 503px, scaled down on narrow screens */
     --promo-text-width: 23.25rem; /* 372px */
     --promo-gap: 5.5rem; /* 88px between the hand image and the text block (text starts at x=608 at 1920px) */
