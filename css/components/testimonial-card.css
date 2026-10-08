@@ -291,8 +291,10 @@
   }
 
   /*
-   * ---------- xl: the side cards let the stars reach their edge, as in the design ----------
-   * The quote keeps its 370px, the rating sits at the top of the header next to the avatar.
+   * ---------- xl: the quote keeps its 370px inside the side cards ----------
+   * The side cards are 417px wide: 28px of padding on both sides would leave the quote 361px, so their
+   * end padding shrinks to 4px and the header gets the 24px back, which keeps the rating 28px from the edge.
+   * The rating sits at the top of the header next to the avatar.
    */
   @media (min-width: 90em) {
     .testimonial-card {
@@ -301,6 +303,14 @@
 
     .testimonial-card--featured {
       padding-inline-end: var(--space-28);
+    }
+
+    .testimonial-card__header {
+      margin-inline-end: var(--space-24);
+    }
+
+    .testimonial-card--featured .testimonial-card__header {
+      margin-inline-end: 0;
     }
 
     .testimonial-card__meta {
