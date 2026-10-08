@@ -8,7 +8,7 @@ Static one-page landing for the fictional coffee shop **Coffea** (UADER, UX-UI 2
 
 - HTML5 + CSS3 only. **No JavaScript**, frameworks, preprocessors or build step.
 - All interactions are CSS-only: hover/focus states, scroll-snap carousels, favourite hearts (checkbox), mobile menu (`<details>`), testimonial pager (anchors).
-- Copy, sizes and positions replicate the Figma design (1920 px frame); the layout was measured against it at 1920 px.
+- Sizes and positions replicate the Figma design (1920 px frame; the copy is real English text, see Open decisions); the layout was measured against it at 1920 px.
 - Accessibility target: WCAG 2.2 AA (skip link, landmarks, keyboard navigation, visible focus, reduced motion).
 - Language: English (`lang="en"`).
 
@@ -125,11 +125,11 @@ Target: Chrome / Edge, Firefox (latest 2), Safari macOS / iOS 16+, Samsung Inter
 
 ## Image credits
 
-The "Our Special Dessert" photos are free stock photos from Pexels (Pexels License: free for commercial use, no attribution required; credited here anyway). They deliberately replace the coffee photos the Figma reuses in that section (PRD risks table); the names are real dessert names, while the price and the lorem ipsum stay as designed. Photos were cropped to 334 x 364 and re-encoded; nothing else was changed.
+The "Our Special Dessert" photos are free stock photos from Pexels (Pexels License: free for commercial use, no attribution required; credited here anyway). They deliberately replace the coffee photos the Figma reuses in that section (PRD risks table); the names are real dessert names. Photos were cropped to 334 x 364 and re-encoded; nothing else was changed.
 
 | Card | Subject | Photographer | Source page | Licence |
 | --- | --- | --- | --- | --- |
-| Chocolate cake | Chocolate cake on a wooden stand | Marta Dzedyshko | https://www.pexels.com/photo/chocolate-cake-2067436/ | Pexels License |
+| Fudge cake | Chocolate cake on a wooden stand | Marta Dzedyshko | https://www.pexels.com/photo/chocolate-cake-2067436/ | Pexels License |
 | Tiramisu | Tiramisu slice on a server | Ali Dashti | https://www.pexels.com/photo/piece-of-tiramisu-cake-20586637/ | Pexels License |
 | Croissants | Two croissants on a dark surface | ready made | https://www.pexels.com/photo/two-brown-bread-3850374/ | Pexels License |
 | Macarons | Row of macarons on a black background | Skyler Ewing | https://www.pexels.com/photo/close-up-of-macarons-4600654/ | Pexels License |
@@ -143,15 +143,16 @@ The "Our Special Dessert" photos are free stock photos from Pexels (Pexels Licen
 | Product card frame is an inset outline | Keeps the card box at the exact 366 px of the design. |
 | Only the centre testimonial card has a frame from 1024 px | The side cards of the Figma have none (below 1024 px all cards are framed). |
 | Social icons sit in a 36 x 44 px slot from 1024 px | Matches the Figma x positions (36 px pitch). WCAG 2.2 AA needs 24 px; the PRD says 44 px. Change `--size-social-slot` in `css/tokens.css` to restore 44 px. |
-| Dessert cards use real dessert photos and names instead of the coffee photos and "Lungo coffee" of the Figma | The PRD risks table asks for dessert photos; price and lorem ipsum are kept. See Image credits. |
+| Dessert cards use real dessert photos and names instead of the coffee photos and "Lungo coffee" of the Figma | The PRD risks table asks for dessert photos. See Image credits. |
+| Real English copy and prices in Argentine pesos instead of the Figma's lorem ipsum, "Lungo coffee" and "Rs. 200" | The PRD risks table asks for real copy and to confirm the currency. Prices use the local format (`$ 2.800`, `<data value="2800">`). |
 | Carousel cards reach the 366 x 570 px design size only at about 1812 px and up | Cards share the track width; below that they shrink to fit four per row. |
 | The container is 1344 px wide at a 1440 px viewport | The 1444 px design container cannot fit next to the gutters there; it is 1444 px from 1540 px up. |
 
 ## Open decisions / known limitations
 
 - **Photo licence:** the coffee, hero and promo stock photos (istockphoto) come from a Figma Community template; confirm the licence or replace them before publishing. The four dessert photos are Pexels License (see Image credits).
-- **Currency:** prices read "Rs. 200" as in the design; decide whether to switch to `$` or another currency.
-- **Placeholders kept on purpose** to replicate the design: the Figma's own lorem ipsum (product descriptions, testimonial quotes), the coffee product name "Lungo coffee" and the price "Rs. 200" (also used for the desserts). All other copy is the Figma's. Nav and footer links are `#` placeholders.
+- **Currency and language (resolved):** the copy is English and prices are in Argentine pesos (ARS), written `$ 2.800` with a dot as thousands separator; the machine-readable `value` is the plain number (`2800`). The amounts are illustrative: confirm the real menu prices.
+- **Placeholder kept on purpose:** the identity of the testimonials. The three cards repeat the Figma's "James Smith", "Entrepreneur" and single avatar (the quotes themselves are real English copy; ratings are 4/5/3). Replace them with distinct names, roles and avatars when real customers are chosen. Nav and footer links are `#` placeholders.
 - **Contrast:** the filled star (`#FFB921`) on the sand card is about 1.4:1 and filled vs empty stars about 1.1:1 (the design's own colour; the rating is also exposed through `aria-label`). The borderless newsletter input against the sand band is about 1.2:1 (below 3:1 for non-text UI). Decide whether to darken them.
 - **Carousel arrows** are real anchors from 1024 to 1279 px (three cards fit, so they scroll). From 1280 px all four cards fit, so they are replaced by `aria-hidden` decorative copies (same look and position, not focusable). Add a fifth card and the links would need to be shown at those widths again.
 - **Pager dots** (12 px, 20 px hit area) fail Lighthouse's `target-size` audit on the desktop profile (accessibility 97). The size is the design's; widening the hit area to 24 px would need the dots spaced further apart than in the design.
