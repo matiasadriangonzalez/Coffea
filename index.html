@@ -183,16 +183,21 @@
 
       <!--
         Products: each carousel is a native scroll container; the arrows are anchors to the first and
-        last card (no JavaScript).
+        last card (no JavaScript). They only show from 1024px to 1279px, where three cards fit and the
+        rest need them; from 1280px all four cards are visible, so decorative aria-hidden copies of the
+        arrows take their place and nothing is left in the tab order for a control that scrolls nothing.
       -->
       <section class="products" id="coffee" aria-labelledby="coffee-title">
         <h2 class="products__title" id="coffee-title">Our Special Coffee</h2>
 
         <div class="carousel">
-          <a class="carousel__arrow carousel__arrow--prev" href="#coffee-1">
+          <a class="carousel__arrow carousel__arrow--prev carousel__arrow--link" href="#coffee-1">
             <svg class="icon carousel__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-left" /></svg>
             <span class="visually-hidden">Previous coffee</span>
           </a>
+          <span class="carousel__arrow carousel__arrow--prev carousel__arrow--static" aria-hidden="true">
+            <svg class="icon carousel__icon" focusable="false"><use href="#icon-arrow-left" /></svg>
+          </span>
 
           <div class="carousel__track" role="group" aria-roledescription="carousel" aria-label="Special coffee" tabindex="0">
           <article class="product-card carousel__item" id="coffee-1">
@@ -316,10 +321,13 @@
           </article>
           </div>
 
-          <a class="carousel__arrow carousel__arrow--next" href="#coffee-4">
+          <a class="carousel__arrow carousel__arrow--next carousel__arrow--link" href="#coffee-4">
             <svg class="icon carousel__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right" /></svg>
             <span class="visually-hidden">Next coffee</span>
           </a>
+          <span class="carousel__arrow carousel__arrow--next carousel__arrow--static" aria-hidden="true">
+            <svg class="icon carousel__icon" focusable="false"><use href="#icon-arrow-right" /></svg>
+          </span>
         </div>
       </section>
 
@@ -327,10 +335,13 @@
         <h2 class="products__title" id="dessert-title">Our Special Dessert</h2>
 
         <div class="carousel">
-          <a class="carousel__arrow carousel__arrow--prev" href="#dessert-1">
+          <a class="carousel__arrow carousel__arrow--prev carousel__arrow--link" href="#dessert-1">
             <svg class="icon carousel__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-left" /></svg>
             <span class="visually-hidden">Previous dessert</span>
           </a>
+          <span class="carousel__arrow carousel__arrow--prev carousel__arrow--static" aria-hidden="true">
+            <svg class="icon carousel__icon" focusable="false"><use href="#icon-arrow-left" /></svg>
+          </span>
 
           <div class="carousel__track" role="group" aria-roledescription="carousel" aria-label="Special desserts" tabindex="0">
           <article class="product-card carousel__item" id="dessert-1">
@@ -454,10 +465,13 @@
           </article>
           </div>
 
-          <a class="carousel__arrow carousel__arrow--next" href="#dessert-4">
+          <a class="carousel__arrow carousel__arrow--next carousel__arrow--link" href="#dessert-4">
             <svg class="icon carousel__icon" aria-hidden="true" focusable="false"><use href="#icon-arrow-right" /></svg>
             <span class="visually-hidden">Next dessert</span>
           </a>
+          <span class="carousel__arrow carousel__arrow--next carousel__arrow--static" aria-hidden="true">
+            <svg class="icon carousel__icon" focusable="false"><use href="#icon-arrow-right" /></svg>
+          </span>
         </div>
       </section>
 

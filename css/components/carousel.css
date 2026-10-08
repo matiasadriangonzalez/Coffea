@@ -131,10 +131,10 @@
       margin-inline: auto;
     }
 
+    /* Shared look of the arrows: real links (--link) and their decorative twins (--static). */
     .carousel__arrow {
       position: absolute;
       top: 50%;
-      display: grid;
       place-items: center;
       width: var(--arrow-size);
       height: var(--arrow-size);
@@ -148,6 +148,10 @@
         color var(--transition-base);
     }
 
+    .carousel__arrow--link {
+      display: grid;
+    }
+
     .carousel__arrow--prev {
       left: var(--arrow-inset);
     }
@@ -156,25 +160,37 @@
       right: var(--arrow-inset);
     }
 
-    .carousel__arrow:focus-visible {
+    .carousel__arrow--link:focus-visible {
       background-color: var(--color-espresso);
       color: var(--color-bg);
     }
   }
 
   @media (min-width: 64em) and (hover: hover) {
-    .carousel__arrow:hover {
+    .carousel__arrow--link:hover {
       background-color: var(--color-espresso);
       color: var(--color-bg);
     }
   }
 
-  /* ---------- 1280px: 4 cards and the 4px gap of the design ---------- */
+  /*
+   * ---------- 1280px: 4 cards and the 4px gap of the design ----------
+   * Every card fits, so the arrows would scroll nothing: the links give way to decorative copies
+   * (aria-hidden spans: not focusable, not announced) that keep the look and the position of the design.
+   */
   @media (min-width: 80em) {
     .carousel {
       --carousel-gap: var(--space-4);
       --carousel-visible: 4;
       --carousel-gaps: 3;
+    }
+
+    .carousel__arrow--link {
+      display: none;
+    }
+
+    .carousel__arrow--static {
+      display: grid;
     }
   }
 
