@@ -8,7 +8,7 @@
  */
 @layer components {
   .testimonials {
-    --testimonials-pad: var(--space-48); /* section padding, top and bottom */
+    --testimonials-pad: var(--space-48); /* section padding, top and bottom (64px from lg) */
     --testimonials-title-gap: var(--space-32);
 
     padding-block: var(--testimonials-pad);
@@ -21,7 +21,6 @@
     padding-inline: var(--space-16);
     color: var(--color-espresso);
     font-size: var(--fs-h2);
-    line-height: var(--lh-tight);
     text-align: center;
   }
 
@@ -30,13 +29,17 @@
     display: block;
   }
 
+  /* 46px line, 12px, then the 43px line of the design. */
   .testimonials__title-accent {
+    margin-bottom: var(--space-12);
     font-family: var(--font-accent);
     font-weight: var(--fw-regular);
+    line-height: var(--lh-accent);
   }
 
   .testimonials__title-main {
     font-family: var(--font-display);
+    line-height: var(--lh-section);
     font-weight: var(--fw-semibold);
     letter-spacing: var(--tracking-h2);
     text-transform: uppercase;
@@ -84,11 +87,14 @@
     gap: var(--space-16);
     max-width: var(--testimonial-featured-width); /* never wider than the design on wide phones */
     padding: var(--space-28);
-    border: var(--border-width) solid var(--color-border-soft);
+    /* The 2px frame is an inset outline, not a border, so the 28px padding is measured from the outer edge. */
+    outline: var(--border-width) solid var(--color-border-soft);
+    outline-offset: calc(var(--border-width) * -1);
     border-radius: var(--radius-card);
     background-color: var(--color-sand-40);
     scroll-margin-block-start: calc(
-      var(--testimonials-pad) + 2 * var(--fs-h2) * var(--lh-tight) + var(--testimonials-title-gap)
+      var(--testimonials-pad) + var(--fs-h2) * (var(--lh-accent) + var(--lh-section)) + var(--space-12) +
+        var(--testimonials-title-gap)
     );
     scroll-snap-align: start;
   }
@@ -157,6 +163,7 @@
   }
 
   .testimonial-card__quote {
+    max-width: var(--testimonial-quote-width);
     font-family: var(--font-ui);
     font-size: var(--fs-xs);
     font-weight: var(--fw-medium);
@@ -189,8 +196,13 @@
     width: var(--size-dot);
     height: var(--size-dot);
     border-radius: var(--radius-round);
-    background-color: var(--color-text-soft);
+    background-color: var(--color-dot);
     transition: background-color var(--transition-base);
+  }
+
+  /* The pager is static: the first dot is the active one. */
+  .testimonials__dots li:first-child .testimonials__dot::before {
+    background-color: var(--color-espresso);
   }
 
   .testimonials__dot:focus-visible::before {
@@ -220,17 +232,21 @@
   /*
    * ---------- lg: the three cards fit, the central one is featured ----------
    * Cards share the track width (the featured one grows a little faster) up to their design size,
-   * and the track stops being a scroller in practice. The pager is then visual only: the middle dot
-   * marks the featured card and the touch targets shrink, since pointer users do not need the 44px.
+   * and the track stops being a scroller in practice. Any room left over goes between the cards.
+   * The pager is then a row of 12px dots (the link keeps a 20px hit area), since pointer users do not need 44px.
    */
   @media (min-width: 64em) {
+    .testimonials {
+      --testimonials-pad: var(--space-64);
+    }
+
     .testimonials__track {
       --testimonial-gap: var(--space-24);
 
-      /* The page container, not full bleed: the cards sit centred in the same column as the other sections. */
+      /* The page container, not full bleed: the cards sit in the same column as the other sections. */
       width: min(100% - 2 * var(--space-48), var(--container));
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       margin-inline: auto;
       padding-inline: 0;
       scroll-padding-inline: 0;
@@ -238,24 +254,66 @@
 
     .testimonial-card {
       flex: 1 1 0;
+      gap: var(--space-12);
       min-width: 0;
       max-width: var(--testimonial-width);
       min-height: var(--testimonial-height);
+      padding-block-end: var(--space-8);
+      outline-color: transparent; /* only the featured card keeps its frame (still visible in forced-colors mode) */
     }
 
     .testimonial-card--featured {
       flex-grow: 1.0575; /* 441 / 417 */
+      outline-color: var(--color-border-soft);
       max-width: var(--testimonial-featured-width);
       min-height: var(--testimonial-featured-height);
     }
 
-    .testimonials__dot {
-      width: var(--size-icon);
-      height: var(--size-icon);
+    .testimonials__pager {
+      margin-top: var(--space-24);
     }
 
-    .testimonials__dots li:nth-child(2) .testimonials__dot::before {
-      background-color: var(--color-espresso);
+    .testimonials__dots {
+      gap: var(--space-8);
+    }
+
+    .testimonials__dot {
+      position: relative;
+      width: var(--size-dot);
+      height: var(--size-dot);
+    }
+
+    .testimonials__dot::after {
+      content: "";
+      position: absolute;
+      inset: calc(var(--space-4) * -1);
+    }
+  }
+
+  /*
+   * ---------- xl: the side cards let the stars reach their edge, as in the design ----------
+   * The quote keeps its 370px, the rating sits at the top of the header next to the avatar.
+   */
+  @media (min-width: 90em) {
+    .testimonial-card {
+      padding-inline-end: var(--space-4);
+    }
+
+    .testimonial-card--featured {
+      padding-inline-end: var(--space-28);
+    }
+
+    .testimonial-card__meta {
+      align-self: stretch;
+      align-items: flex-start;
+    }
+
+    .testimonial-card__author {
+      align-self: center;
+    }
+
+    .testimonial-card__rating {
+      font-size: var(--size-icon);
     }
   }
 }

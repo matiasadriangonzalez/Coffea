@@ -6,7 +6,6 @@
   .product-card {
     display: flex;
     flex-direction: column;
-    gap: var(--space-16);
     padding: var(--space-16);
     border-radius: var(--radius-card);
     background-color: var(--color-sand-20);
@@ -39,14 +38,14 @@
   }
 
   /*
-   * The label is the 44px tap target; the heart (33px) sits 18px from the image edges,
-   * so the label is pulled out by half of the difference between both sizes.
+   * The label is the 44px tap target; the heart (33px) sits 18px from the top and 27px from the right
+   * edge of the image, so the label is pulled out by half of the difference between both sizes.
    */
   .product-card__fav {
-    --fav-offset: calc(var(--inset-heart) - (var(--tap-target) - var(--size-heart)) / 2);
+    --fav-pull: calc((var(--tap-target) - var(--size-heart)) / 2);
 
     position: absolute;
-    inset: var(--fav-offset) var(--fav-offset) auto auto;
+    inset: calc(var(--inset-heart) - var(--fav-pull)) calc(var(--inset-heart-end) - var(--fav-pull)) auto auto;
     display: grid;
     place-items: center;
     width: var(--tap-target);
@@ -84,16 +83,19 @@
 
   /* ---------- Text ---------- */
 
+  /* Vertical rhythm of the design: image, 16px, name (48px), description (2 x 28px, drawn 4px below the name), 8px, price row. */
   .product-card__name {
+    margin-top: var(--space-16);
     font-family: var(--font-body);
     font-size: var(--fs-card-title);
     font-weight: var(--fw-semibold);
-    line-height: var(--lh-tight);
+    line-height: var(--lh-card-title);
     color: var(--color-espresso);
     overflow-wrap: break-word;
   }
 
   .product-card__description {
+    margin-block: var(--space-4) var(--space-8);
     font-size: var(--fs-lg);
     line-height: var(--lh-desc);
     color: var(--color-maroon);

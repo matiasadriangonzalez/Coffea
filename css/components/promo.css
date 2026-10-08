@@ -93,16 +93,31 @@
     }
   }
 
-  /* ---------- lg and xl: both images, 335px band ---------- */
+  /*
+   * ---------- lg and xl: both images, 335px band, text block left-aligned ----------
+   * The block starts one gap after the hand image (x=608 at 1920px) and keeps clear of the beans.
+   */
   @media (min-width: 64em) {
     .promo {
+      justify-content: flex-start;
+      margin-block-start: var(--space-64); /* page background between the dessert cards and the band */
       min-height: var(--promo-height);
       padding-block: 0;
-      padding-inline: var(--promo-hand-width) var(--promo-beans-width);
+      padding-inline: calc(var(--promo-hand-width) + var(--promo-gap)) var(--promo-beans-width);
     }
 
     .promo__picture--beans {
       display: block;
+    }
+
+    .promo__inner {
+      align-items: flex-start;
+      text-align: start;
+    }
+
+    /* Plain wrapping: the design breaks "Check Out Our Best / Coffee Beans". */
+    .promo__title {
+      text-wrap: wrap;
     }
   }
 }

@@ -122,7 +122,9 @@
   /* ---------- lg and xl: six columns in a row, 358px band ---------- */
   @media (min-width: 64em) {
     .footer {
+      align-content: start;
       min-height: var(--footer-height);
+      padding-block: var(--space-80) 0;
     }
 
     .footer__inner {
@@ -132,6 +134,11 @@
       column-gap: var(--space-24);
     }
 
+    /* The brand box starts 80px into the band, the headings 16px below it, as in the design. */
+    .footer__column {
+      padding-top: var(--space-16);
+    }
+
     /* The 44px minimum is dropped: the links take the 42px rhythm of the design. */
     .footer__link {
       min-height: var(--footer-link-step);
@@ -139,15 +146,40 @@
 
     .footer__logo {
       min-height: 0;
+      line-height: var(--lh-base);
     }
 
     /* Fluid between 1024px (19px) and 1440px (24px) so six columns fit a laptop without wrapping. */
     .footer__heading {
+      margin-bottom: var(--space-20);
       font-size: clamp(var(--fs-md), 0.42rem + 1.2vw, var(--fs-footer-h));
     }
 
+    /*
+     * Icons keep a 24px size on a 36px pitch, centred under the heading, as in the design;
+     * the touch target is 36px wide (44px tall) so neighbours do not overlap.
+     */
     .footer__social {
       flex-wrap: nowrap;
+      justify-content: center;
+      padding-block-start: var(--space-10); /* padding: a margin would collapse with the heading's */
+      margin-inline-start: 0;
+    }
+
+    .footer__social-link {
+      width: var(--size-social-slot);
+    }
+  }
+
+  /*
+   * ---------- xl: the design's column positions ----------
+   * Brand, four link columns and social media share the 1444px container in the proportions of the
+   * design (columns start at x=459, 698, 928, 1175 and 1507 at 1920px); the tracks scale with the container.
+   */
+  @media (min-width: 90em) {
+    .footer__inner {
+      grid-template-columns: var(--footer-columns);
+      column-gap: 0;
     }
   }
 }

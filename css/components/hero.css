@@ -137,16 +137,24 @@
       padding-top: calc(var(--hero-height) * var(--hero-content-ratio));
     }
 
+    /*
+     * Rhythm measured on the design (not the 40 / 56 / 56 of the PRD, which do not add up to the
+     * 419px between the text block top and the button): eyebrow 20px, 12px, title 3 x 82px,
+     * 40px, paragraph 2 x 26px, 48px, button at y=713.
+     */
     .hero__eyebrow {
-      margin-bottom: var(--space-40);
+      margin-bottom: var(--space-12);
+      line-height: var(--lh-flat);
     }
 
+    /* Plain wrapping: the design breaks "We serve the / richest coffee in / the city!". */
     .hero__title {
-      margin-bottom: var(--space-56);
+      margin-bottom: var(--space-40);
+      text-wrap: wrap;
     }
 
     .hero__text {
-      margin-bottom: var(--space-56);
+      margin-bottom: var(--space-48);
     }
   }
 
