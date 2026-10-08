@@ -92,7 +92,7 @@ CHROME_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
 - Deliverables are generated into `assets/img/`: AVIF and WebP plus a JPG (photos) or PNG (transparent art) fallback, served through `<picture>` with explicit `width`/`height`. The hero ships in 768, 1280 and 1920 px widths.
 - Icons are optimised with SVGO; `index.html` and `404.html` embed them as an inline `<symbol>` sprite and reference them with `<use>`.
 - Fonts (Outfit, Playfair Display, Poppins, Reggae One) are self-hosted as latin woff2 in `assets/fonts/`, declared in `css/tokens.css` with `font-display: swap`. Outfit, Playfair Display and Poppins 500 are preloaded.
-- **2x / retina photos are pending.** The sources in `media/` are 1x, so `assets/img/` has no real 2x variants (only the avatar has a 2x file). A Figma export at 2x is needed before adding `srcset` densities.
+- **2x / retina:** the four dessert photos ship as `dessert-N-334.*` (1x) and `dessert-N-668.*` (2x), cropped to the 334 x 364 slot and served with `srcset` width descriptors plus `sizes`. The other photos (coffee, hero) are still 1x only: the Figma sources in `media/` are 1x, so a 2x export is needed before adding densities to them. Note that `dessert-1.*` and `dessert-2.*` (no size suffix) are coffee photos used by the "Our Special Coffee" cards; they were not renamed because of the immutable cache.
 
 ## Deploy to Netlify
 
@@ -123,6 +123,17 @@ Target: Chrome / Edge, Firefox (latest 2), Safari macOS / iOS 16+, Samsung Inter
 | Firefox, Samsung Internet | **Pending: needs a manual check** (no device or install available to the author) |
 | Real iOS and Android devices | **Pending: needs a manual check** |
 
+## Image credits
+
+The "Our Special Dessert" photos are free stock photos from Pexels (Pexels License: free for commercial use, no attribution required; credited here anyway). They deliberately replace the coffee photos the Figma reuses in that section (PRD risks table); the names are real dessert names, while the price and the lorem ipsum stay as designed. Photos were cropped to 334 x 364 and re-encoded; nothing else was changed.
+
+| Card | Subject | Photographer | Source page | Licence |
+| --- | --- | --- | --- | --- |
+| Chocolate cake | Chocolate cake on a wooden stand | Marta Dzedyshko | https://www.pexels.com/photo/chocolate-cake-2067436/ | Pexels License |
+| Tiramisu | Tiramisu slice on a server | Ali Dashti | https://www.pexels.com/photo/piece-of-tiramisu-cake-20586637/ | Pexels License |
+| Croissants | Two croissants on a dark surface | ready made | https://www.pexels.com/photo/two-brown-bread-3850374/ | Pexels License |
+| Macarons | Row of macarons on a black background | Skyler Ewing | https://www.pexels.com/photo/close-up-of-macarons-4600654/ | Pexels License |
+
 ## Deliberate deviations from the design / PRD
 
 | Deviation | Why |
@@ -132,14 +143,15 @@ Target: Chrome / Edge, Firefox (latest 2), Safari macOS / iOS 16+, Samsung Inter
 | Product card frame is an inset outline | Keeps the card box at the exact 366 px of the design. |
 | Only the centre testimonial card has a frame from 1024 px | The side cards of the Figma have none (below 1024 px all cards are framed). |
 | Social icons sit in a 36 x 44 px slot from 1024 px | Matches the Figma x positions (36 px pitch). WCAG 2.2 AA needs 24 px; the PRD says 44 px. Change `--size-social-slot` in `css/tokens.css` to restore 44 px. |
+| Dessert cards use real dessert photos and names instead of the coffee photos and "Lungo coffee" of the Figma | The PRD risks table asks for dessert photos; price and lorem ipsum are kept. See Image credits. |
 | Carousel cards reach the 366 x 570 px design size only at about 1812 px and up | Cards share the track width; below that they shrink to fit four per row. |
 | The container is 1344 px wide at a 1440 px viewport | The 1444 px design container cannot fit next to the gutters there; it is 1444 px from 1540 px up. |
 
 ## Open decisions / known limitations
 
-- **Photo licence:** the stock photos (istockphoto) come from a Figma Community template; confirm the licence or replace them before publishing.
+- **Photo licence:** the coffee, hero and promo stock photos (istockphoto) come from a Figma Community template; confirm the licence or replace them before publishing. The four dessert photos are Pexels License (see Image credits).
 - **Currency:** prices read "Rs. 200" as in the design; decide whether to switch to `$` or another currency.
-- **Placeholders kept on purpose** to replicate the design: the Figma's own lorem ipsum (product descriptions, testimonial quotes), the product name "Lungo coffee" and price "Rs. 200" (reused for desserts), and the coffee photos in the dessert section. All other copy is the Figma's. Nav and footer links are `#` placeholders.
+- **Placeholders kept on purpose** to replicate the design: the Figma's own lorem ipsum (product descriptions, testimonial quotes), the coffee product name "Lungo coffee" and the price "Rs. 200" (also used for the desserts). All other copy is the Figma's. Nav and footer links are `#` placeholders.
 - **Contrast:** the filled star (`#FFB921`) on the sand card is about 1.4:1 and filled vs empty stars about 1.1:1 (the design's own colour; the rating is also exposed through `aria-label`). The borderless newsletter input against the sand band is about 1.2:1 (below 3:1 for non-text UI). Decide whether to darken them.
 - **Carousel arrows** are real anchors from 1024 to 1279 px (three cards fit, so they scroll). From 1280 px all four cards fit, so they are replaced by `aria-hidden` decorative copies (same look and position, not focusable). Add a fifth card and the links would need to be shown at those widths again.
 - **Pager dots** (12 px, 20 px hit area) fail Lighthouse's `target-size` audit on the desktop profile (accessibility 97). The size is the design's; widening the hit area to 24 px would need the dots spaced further apart than in the design.
