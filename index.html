@@ -112,8 +112,9 @@
     <main id="main">
       <!--
         Copy: the lorem ipsum, "Lungo coffee", "Rs. 200" and the testimonial texts are the design's own
-        placeholders and are kept as they are (the typos of the design are fixed; the dessert section reuses the
-        coffee copy). The product photos and the avatar are real.
+        placeholders and are kept as they are (the typos of the design are fixed). The coffee cards keep "Lungo
+        coffee"; the dessert cards keep the price and the lorem ipsum but use real dessert names and photos
+        instead of the coffee ones the design reuses there. The product photos and the avatar are real.
       -->
       <section class="hero" aria-labelledby="hero-title">
         <picture class="hero__media">
@@ -347,14 +348,16 @@
           <article class="product-card carousel__item" id="dessert-1">
             <div class="product-card__media">
               <picture>
-                <source type="image/avif" srcset="assets/img/dessert-4.avif">
-                <source type="image/webp" srcset="assets/img/dessert-4.webp">
+                <source type="image/avif" srcset="assets/img/dessert-1-334.avif 334w, assets/img/dessert-1-668.avif 668w" sizes="(min-width: 1860px) 334px, (min-width: 1440px) calc(261px + (100vw - 1440px) * 0.19), (min-width: 1280px) calc((100vw - 332px) / 4), (min-width: 1024px) calc((100vw - 320px) / 3), (min-width: 768px) min(334px, calc((100vw - 176px) / 2.5)), min(334px, calc((100vw - 86.4px) / 1.2))">
+                <source type="image/webp" srcset="assets/img/dessert-1-334.webp 334w, assets/img/dessert-1-668.webp 668w" sizes="(min-width: 1860px) 334px, (min-width: 1440px) calc(261px + (100vw - 1440px) * 0.19), (min-width: 1280px) calc((100vw - 332px) / 4), (min-width: 1024px) calc((100vw - 320px) / 3), (min-width: 768px) min(334px, calc((100vw - 176px) / 2.5)), min(334px, calc((100vw - 86.4px) / 1.2))">
                 <img
                   class="product-card__image"
-                  src="assets/img/dessert-4.jpg"
+                  src="assets/img/dessert-1-668.jpg"
+                  srcset="assets/img/dessert-1-334.jpg 334w, assets/img/dessert-1-668.jpg 668w"
+                  sizes="(min-width: 1860px) 334px, (min-width: 1440px) calc(261px + (100vw - 1440px) * 0.19), (min-width: 1280px) calc((100vw - 332px) / 4), (min-width: 1024px) calc((100vw - 320px) / 3), (min-width: 768px) min(334px, calc((100vw - 176px) / 2.5)), min(334px, calc((100vw - 86.4px) / 1.2))"
                   width="334"
                   height="364"
-                  alt="Two lattes with leaf-shaped foam art on a wooden stool among plants"
+                  alt="Round chocolate cake glazed with a chocolate drizzle, on a wooden stand dressed with linen"
                   loading="lazy"
                   decoding="async"
                 >
@@ -363,28 +366,30 @@
               <label class="product-card__fav" for="dessert-1-fav">
                 <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
                 <svg class="icon product-card__heart product-card__heart--on" aria-hidden="true" focusable="false"><use href="#icon-heart-filled" /></svg>
-                <span class="visually-hidden">Add Lungo coffee to favourites</span>
+                <span class="visually-hidden">Add Chocolate cake to favourites</span>
               </label>
             </div>
-            <h3 class="product-card__name">Lungo coffee</h3>
+            <h3 class="product-card__name">Chocolate cake</h3>
             <p class="product-card__description" lang="la">Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
             <div class="product-card__row">
               <data class="product-card__price" value="200">Rs. 200</data>
-              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
+              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Chocolate cake</span></button>
             </div>
           </article>
 
           <article class="product-card carousel__item" id="dessert-2">
             <div class="product-card__media">
               <picture>
-                <source type="image/avif" srcset="assets/img/coffee-3.avif">
-                <source type="image/webp" srcset="assets/img/coffee-3.webp">
+                <source type="image/avif" srcset="assets/img/dessert-2-334.avif 334w, assets/img/dessert-2-668.avif 668w" sizes="(min-width: 1860px) 334px, (min-width: 1440px) calc(261px + (100vw - 1440px) * 0.19), (min-width: 1280px) calc((100vw - 332px) / 4), (min-width: 1024px) calc((100vw - 320px) / 3), (min-width: 768px) min(334px, calc((100vw - 176px) / 2.5)), min(334px, calc((100vw - 86.4px) / 1.2))">
+                <source type="image/webp" srcset="assets/img/dessert-2-334.webp 334w, assets/img/dessert-2-668.webp 668w" sizes="(min-width: 1860px) 334px, (min-width: 1440px) calc(261px + (100vw - 1440px) * 0.19), (min-width: 1280px) calc((100vw - 332px) / 4), (min-width: 1024px) calc((100vw - 320px) / 3), (min-width: 768px) min(334px, calc((100vw - 176px) / 2.5)), min(334px, calc((100vw - 86.4px) / 1.2))">
                 <img
                   class="product-card__image"
-                  src="assets/img/coffee-3.jpg"
+                  src="assets/img/dessert-2-668.jpg"
+                  srcset="assets/img/dessert-2-334.jpg 334w, assets/img/dessert-2-668.jpg 668w"
+                  sizes="(min-width: 1860px) 334px, (min-width: 1440px) calc(261px + (100vw - 1440px) * 0.19), (min-width: 1280px) calc((100vw - 332px) / 4), (min-width: 1024px) calc((100vw - 320px) / 3), (min-width: 768px) min(334px, calc((100vw - 176px) / 2.5)), min(334px, calc((100vw - 86.4px) / 1.2))"
                   width="334"
                   height="364"
-                  alt="Top view of a latte with leaf-shaped milk foam on a round rustic wooden stool"
+                  alt="Slice of tiramisu dusted with cocoa, lifted out of the dish to show its layers"
                   loading="lazy"
                   decoding="async"
                 >
@@ -393,28 +398,30 @@
               <label class="product-card__fav" for="dessert-2-fav">
                 <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
                 <svg class="icon product-card__heart product-card__heart--on" aria-hidden="true" focusable="false"><use href="#icon-heart-filled" /></svg>
-                <span class="visually-hidden">Add Lungo coffee to favourites</span>
+                <span class="visually-hidden">Add Tiramisu to favourites</span>
               </label>
             </div>
-            <h3 class="product-card__name">Lungo coffee</h3>
+            <h3 class="product-card__name">Tiramisu</h3>
             <p class="product-card__description" lang="la">Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
             <div class="product-card__row">
               <data class="product-card__price" value="200">Rs. 200</data>
-              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
+              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Tiramisu</span></button>
             </div>
           </article>
 
           <article class="product-card carousel__item" id="dessert-3">
             <div class="product-card__media">
               <picture>
-                <source type="image/avif" srcset="assets/img/dessert-3.avif">
-                <source type="image/webp" srcset="assets/img/dessert-3.webp">
+                <source type="image/avif" srcset="assets/img/dessert-3-334.avif 334w, assets/img/dessert-3-668.avif 668w" sizes="(min-width: 1860px) 334px, (min-width: 1440px) calc(261px + (100vw - 1440px) * 0.19), (min-width: 1280px) calc((100vw - 332px) / 4), (min-width: 1024px) calc((100vw - 320px) / 3), (min-width: 768px) min(334px, calc((100vw - 176px) / 2.5)), min(334px, calc((100vw - 86.4px) / 1.2))">
+                <source type="image/webp" srcset="assets/img/dessert-3-334.webp 334w, assets/img/dessert-3-668.webp 668w" sizes="(min-width: 1860px) 334px, (min-width: 1440px) calc(261px + (100vw - 1440px) * 0.19), (min-width: 1280px) calc((100vw - 332px) / 4), (min-width: 1024px) calc((100vw - 320px) / 3), (min-width: 768px) min(334px, calc((100vw - 176px) / 2.5)), min(334px, calc((100vw - 86.4px) / 1.2))">
                 <img
                   class="product-card__image"
-                  src="assets/img/dessert-3.jpg"
+                  src="assets/img/dessert-3-668.jpg"
+                  srcset="assets/img/dessert-3-334.jpg 334w, assets/img/dessert-3-668.jpg 668w"
+                  sizes="(min-width: 1860px) 334px, (min-width: 1440px) calc(261px + (100vw - 1440px) * 0.19), (min-width: 1280px) calc((100vw - 332px) / 4), (min-width: 1024px) calc((100vw - 320px) / 3), (min-width: 768px) min(334px, calc((100vw - 176px) / 2.5)), min(334px, calc((100vw - 86.4px) / 1.2))"
                   width="334"
                   height="364"
-                  alt="Top view of a latte with a heart-shaped foam pattern on a dark starry background"
+                  alt="Two golden butter croissants lit by a single beam of light on a dark surface"
                   loading="lazy"
                   decoding="async"
                 >
@@ -423,28 +430,30 @@
               <label class="product-card__fav" for="dessert-3-fav">
                 <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
                 <svg class="icon product-card__heart product-card__heart--on" aria-hidden="true" focusable="false"><use href="#icon-heart-filled" /></svg>
-                <span class="visually-hidden">Add Lungo coffee to favourites</span>
+                <span class="visually-hidden">Add Croissants to favourites</span>
               </label>
             </div>
-            <h3 class="product-card__name">Lungo coffee</h3>
+            <h3 class="product-card__name">Croissants</h3>
             <p class="product-card__description" lang="la">Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
             <div class="product-card__row">
               <data class="product-card__price" value="200">Rs. 200</data>
-              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
+              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Croissants</span></button>
             </div>
           </article>
 
           <article class="product-card carousel__item" id="dessert-4">
             <div class="product-card__media">
               <picture>
-                <source type="image/avif" srcset="assets/img/coffee-4.avif">
-                <source type="image/webp" srcset="assets/img/coffee-4.webp">
+                <source type="image/avif" srcset="assets/img/dessert-4-334.avif 334w, assets/img/dessert-4-668.avif 668w" sizes="(min-width: 1860px) 334px, (min-width: 1440px) calc(261px + (100vw - 1440px) * 0.19), (min-width: 1280px) calc((100vw - 332px) / 4), (min-width: 1024px) calc((100vw - 320px) / 3), (min-width: 768px) min(334px, calc((100vw - 176px) / 2.5)), min(334px, calc((100vw - 86.4px) / 1.2))">
+                <source type="image/webp" srcset="assets/img/dessert-4-334.webp 334w, assets/img/dessert-4-668.webp 668w" sizes="(min-width: 1860px) 334px, (min-width: 1440px) calc(261px + (100vw - 1440px) * 0.19), (min-width: 1280px) calc((100vw - 332px) / 4), (min-width: 1024px) calc((100vw - 320px) / 3), (min-width: 768px) min(334px, calc((100vw - 176px) / 2.5)), min(334px, calc((100vw - 86.4px) / 1.2))">
                 <img
                   class="product-card__image"
-                  src="assets/img/coffee-4.jpg"
+                  src="assets/img/dessert-4-668.jpg"
+                  srcset="assets/img/dessert-4-334.jpg 334w, assets/img/dessert-4-668.jpg 668w"
+                  sizes="(min-width: 1860px) 334px, (min-width: 1440px) calc(261px + (100vw - 1440px) * 0.19), (min-width: 1280px) calc((100vw - 332px) / 4), (min-width: 1024px) calc((100vw - 320px) / 3), (min-width: 768px) min(334px, calc((100vw - 176px) / 2.5)), min(334px, calc((100vw - 86.4px) / 1.2))"
                   width="334"
                   height="364"
-                  alt="Latte with leaf-shaped foam art in a grey cup on a sunlit table"
+                  alt="Row of chocolate, lemon and vanilla macarons on a dark background"
                   loading="lazy"
                   decoding="async"
                 >
@@ -453,14 +462,14 @@
               <label class="product-card__fav" for="dessert-4-fav">
                 <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
                 <svg class="icon product-card__heart product-card__heart--on" aria-hidden="true" focusable="false"><use href="#icon-heart-filled" /></svg>
-                <span class="visually-hidden">Add Lungo coffee to favourites</span>
+                <span class="visually-hidden">Add Macarons to favourites</span>
               </label>
             </div>
-            <h3 class="product-card__name">Lungo coffee</h3>
+            <h3 class="product-card__name">Macarons</h3>
             <p class="product-card__description" lang="la">Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
             <div class="product-card__row">
               <data class="product-card__price" value="200">Rs. 200</data>
-              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
+              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Macarons</span></button>
             </div>
           </article>
           </div>
