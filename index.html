@@ -110,6 +110,11 @@
     </header>
 
     <main id="main">
+      <!--
+        Copy: the lorem ipsum, "Lungo coffee", "Rs. 200" and the testimonial texts are the design's own
+        placeholders and are kept as they are (the typos of the design are fixed; the dessert section reuses the
+        coffee copy). The product photos and the avatar are real.
+      -->
       <section class="hero" aria-labelledby="hero-title">
         <picture class="hero__media">
           <source
@@ -139,10 +144,7 @@
           <div class="hero__content">
             <p class="hero__eyebrow">Welcome</p>
             <h1 class="hero__title" id="hero-title">We serve the richest coffee in the city!</h1>
-            <p class="hero__text">
-              Freshly roasted beans, brewed with care and served with a smile. Stop by for your daily cup
-              and find your new favourite blend.
-            </p>
+            <p class="hero__text" lang="la">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
             <a class="hero__cta" href="#coffee">Order Now</a>
           </div>
         </div>
@@ -180,9 +182,8 @@
       </section>
 
       <!--
-        Products: names, descriptions and prices are PLACEHOLDERS copied from the design (the dessert
-        section reuses the coffee copy). The photos are real. Each carousel is a native scroll
-        container; the arrows are anchors to the first and last card (no JavaScript).
+        Products: each carousel is a native scroll container; the arrows are anchors to the first and
+        last card (no JavaScript).
       -->
       <section class="products" id="coffee" aria-labelledby="coffee-title">
         <h2 class="products__title" id="coffee-title">Our Special Coffee</h2>
@@ -217,7 +218,7 @@
               </label>
             </div>
             <h3 class="product-card__name">Lungo coffee</h3>
-            <p class="product-card__description">Strong, smooth and full of flavour.</p>
+            <p class="product-card__description" lang="la">Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
             <div class="product-card__row">
               <data class="product-card__price" value="200">Rs. 200</data>
               <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
@@ -225,6 +226,66 @@
           </article>
 
           <article class="product-card carousel__item" id="coffee-2">
+            <div class="product-card__media">
+              <picture>
+                <source type="image/avif" srcset="assets/img/dessert-1.avif">
+                <source type="image/webp" srcset="assets/img/dessert-1.webp">
+                <img
+                  class="product-card__image"
+                  src="assets/img/dessert-1.jpg"
+                  width="334"
+                  height="364"
+                  alt="Top view of a cup of black coffee on a wooden tray among green leaves"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
+              <input class="product-card__fav-input visually-hidden" type="checkbox" id="coffee-2-fav">
+              <label class="product-card__fav" for="coffee-2-fav">
+                <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
+                <svg class="icon product-card__heart product-card__heart--on" aria-hidden="true" focusable="false"><use href="#icon-heart-filled" /></svg>
+                <span class="visually-hidden">Add Lungo coffee to favourites</span>
+              </label>
+            </div>
+            <h3 class="product-card__name">Lungo coffee</h3>
+            <p class="product-card__description" lang="la">Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
+            <div class="product-card__row">
+              <data class="product-card__price" value="200">Rs. 200</data>
+              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
+            </div>
+          </article>
+
+          <article class="product-card carousel__item" id="coffee-3">
+            <div class="product-card__media">
+              <picture>
+                <source type="image/avif" srcset="assets/img/dessert-2.avif">
+                <source type="image/webp" srcset="assets/img/dessert-2.webp">
+                <img
+                  class="product-card__image"
+                  src="assets/img/dessert-2.jpg"
+                  width="334"
+                  height="364"
+                  alt="Latte with a heart of milk foam in a maroon cup and saucer on a wooden table"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
+              <input class="product-card__fav-input visually-hidden" type="checkbox" id="coffee-3-fav">
+              <label class="product-card__fav" for="coffee-3-fav">
+                <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
+                <svg class="icon product-card__heart product-card__heart--on" aria-hidden="true" focusable="false"><use href="#icon-heart-filled" /></svg>
+                <span class="visually-hidden">Add Lungo coffee to favourites</span>
+              </label>
+            </div>
+            <h3 class="product-card__name">Lungo coffee</h3>
+            <p class="product-card__description" lang="la">Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
+            <div class="product-card__row">
+              <data class="product-card__price" value="200">Rs. 200</data>
+              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
+            </div>
+          </article>
+
+          <article class="product-card carousel__item" id="coffee-4">
             <div class="product-card__media">
               <picture>
                 <source type="image/avif" srcset="assets/img/coffee-2.avif">
@@ -239,66 +300,6 @@
                   decoding="async"
                 >
               </picture>
-              <input class="product-card__fav-input visually-hidden" type="checkbox" id="coffee-2-fav">
-              <label class="product-card__fav" for="coffee-2-fav">
-                <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
-                <svg class="icon product-card__heart product-card__heart--on" aria-hidden="true" focusable="false"><use href="#icon-heart-filled" /></svg>
-                <span class="visually-hidden">Add Lungo coffee to favourites</span>
-              </label>
-            </div>
-            <h3 class="product-card__name">Lungo coffee</h3>
-            <p class="product-card__description">Strong, smooth and full of flavour.</p>
-            <div class="product-card__row">
-              <data class="product-card__price" value="200">Rs. 200</data>
-              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
-            </div>
-          </article>
-
-          <article class="product-card carousel__item" id="coffee-3">
-            <div class="product-card__media">
-              <picture>
-                <source type="image/avif" srcset="assets/img/coffee-3.avif">
-                <source type="image/webp" srcset="assets/img/coffee-3.webp">
-                <img
-                  class="product-card__image"
-                  src="assets/img/coffee-3.jpg"
-                  width="334"
-                  height="364"
-                  alt="Top view of a latte with leaf-shaped milk foam on a round rustic wooden stool"
-                  loading="lazy"
-                  decoding="async"
-                >
-              </picture>
-              <input class="product-card__fav-input visually-hidden" type="checkbox" id="coffee-3-fav">
-              <label class="product-card__fav" for="coffee-3-fav">
-                <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
-                <svg class="icon product-card__heart product-card__heart--on" aria-hidden="true" focusable="false"><use href="#icon-heart-filled" /></svg>
-                <span class="visually-hidden">Add Lungo coffee to favourites</span>
-              </label>
-            </div>
-            <h3 class="product-card__name">Lungo coffee</h3>
-            <p class="product-card__description">Strong, smooth and full of flavour.</p>
-            <div class="product-card__row">
-              <data class="product-card__price" value="200">Rs. 200</data>
-              <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
-            </div>
-          </article>
-
-          <article class="product-card carousel__item" id="coffee-4">
-            <div class="product-card__media">
-              <picture>
-                <source type="image/avif" srcset="assets/img/coffee-4.avif">
-                <source type="image/webp" srcset="assets/img/coffee-4.webp">
-                <img
-                  class="product-card__image"
-                  src="assets/img/coffee-4.jpg"
-                  width="334"
-                  height="364"
-                  alt="Latte with leaf-shaped foam art in a grey cup on a sunlit table"
-                  loading="lazy"
-                  decoding="async"
-                >
-              </picture>
               <input class="product-card__fav-input visually-hidden" type="checkbox" id="coffee-4-fav">
               <label class="product-card__fav" for="coffee-4-fav">
                 <svg class="icon product-card__heart product-card__heart--off" aria-hidden="true" focusable="false"><use href="#icon-heart" /></svg>
@@ -307,7 +308,7 @@
               </label>
             </div>
             <h3 class="product-card__name">Lungo coffee</h3>
-            <p class="product-card__description">Strong, smooth and full of flavour.</p>
+            <p class="product-card__description" lang="la">Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
             <div class="product-card__row">
               <data class="product-card__price" value="200">Rs. 200</data>
               <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
@@ -335,14 +336,14 @@
           <article class="product-card carousel__item" id="dessert-1">
             <div class="product-card__media">
               <picture>
-                <source type="image/avif" srcset="assets/img/dessert-1.avif">
-                <source type="image/webp" srcset="assets/img/dessert-1.webp">
+                <source type="image/avif" srcset="assets/img/dessert-4.avif">
+                <source type="image/webp" srcset="assets/img/dessert-4.webp">
                 <img
                   class="product-card__image"
-                  src="assets/img/dessert-1.jpg"
+                  src="assets/img/dessert-4.jpg"
                   width="334"
                   height="364"
-                  alt="Top view of a cup of black coffee on a wooden tray among green leaves"
+                  alt="Two lattes with leaf-shaped foam art on a wooden stool among plants"
                   loading="lazy"
                   decoding="async"
                 >
@@ -355,7 +356,7 @@
               </label>
             </div>
             <h3 class="product-card__name">Lungo coffee</h3>
-            <p class="product-card__description">Strong, smooth and full of flavour.</p>
+            <p class="product-card__description" lang="la">Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
             <div class="product-card__row">
               <data class="product-card__price" value="200">Rs. 200</data>
               <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
@@ -365,14 +366,14 @@
           <article class="product-card carousel__item" id="dessert-2">
             <div class="product-card__media">
               <picture>
-                <source type="image/avif" srcset="assets/img/dessert-2.avif">
-                <source type="image/webp" srcset="assets/img/dessert-2.webp">
+                <source type="image/avif" srcset="assets/img/coffee-3.avif">
+                <source type="image/webp" srcset="assets/img/coffee-3.webp">
                 <img
                   class="product-card__image"
-                  src="assets/img/dessert-2.jpg"
+                  src="assets/img/coffee-3.jpg"
                   width="334"
                   height="364"
-                  alt="Latte with a heart of milk foam in a maroon cup and saucer on a wooden table"
+                  alt="Top view of a latte with leaf-shaped milk foam on a round rustic wooden stool"
                   loading="lazy"
                   decoding="async"
                 >
@@ -385,7 +386,7 @@
               </label>
             </div>
             <h3 class="product-card__name">Lungo coffee</h3>
-            <p class="product-card__description">Strong, smooth and full of flavour.</p>
+            <p class="product-card__description" lang="la">Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
             <div class="product-card__row">
               <data class="product-card__price" value="200">Rs. 200</data>
               <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
@@ -415,7 +416,7 @@
               </label>
             </div>
             <h3 class="product-card__name">Lungo coffee</h3>
-            <p class="product-card__description">Strong, smooth and full of flavour.</p>
+            <p class="product-card__description" lang="la">Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
             <div class="product-card__row">
               <data class="product-card__price" value="200">Rs. 200</data>
               <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
@@ -425,14 +426,14 @@
           <article class="product-card carousel__item" id="dessert-4">
             <div class="product-card__media">
               <picture>
-                <source type="image/avif" srcset="assets/img/dessert-4.avif">
-                <source type="image/webp" srcset="assets/img/dessert-4.webp">
+                <source type="image/avif" srcset="assets/img/coffee-4.avif">
+                <source type="image/webp" srcset="assets/img/coffee-4.webp">
                 <img
                   class="product-card__image"
-                  src="assets/img/dessert-4.jpg"
+                  src="assets/img/coffee-4.jpg"
                   width="334"
                   height="364"
-                  alt="Two lattes with leaf-shaped foam art on a wooden stool among plants"
+                  alt="Latte with leaf-shaped foam art in a grey cup on a sunlit table"
                   loading="lazy"
                   decoding="async"
                 >
@@ -445,7 +446,7 @@
               </label>
             </div>
             <h3 class="product-card__name">Lungo coffee</h3>
-            <p class="product-card__description">Strong, smooth and full of flavour.</p>
+            <p class="product-card__description" lang="la">Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
             <div class="product-card__row">
               <data class="product-card__price" value="200">Rs. 200</data>
               <button class="product-card__button" type="button">Order Now<span class="visually-hidden"> Lungo coffee</span></button>
@@ -489,8 +490,8 @@
         </h2>
 
         <!--
-          PLACEHOLDER copy: the three testimonials repeat the Figma "James Smith" and lorem ipsum, and share one
-          avatar. The avatar has an empty alt on purpose: the name is already in the figcaption next to it.
+          The three testimonials repeat the design's "James Smith" and quote, and share one avatar. The avatar
+          has an empty alt on purpose: the name is already in the figcaption next to it.
           The track is a native scroll container (swipe, trackpad, keyboard); the dots are anchors to each card.
         -->
         <div class="testimonials__track" role="group" aria-roledescription="carousel" aria-label="Customer testimonials" tabindex="0">
@@ -524,8 +525,8 @@
                 </p>
               </div>
             </figcaption>
-            <blockquote class="testimonial-card__quote">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <blockquote class="testimonial-card__quote" lang="la">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing ,Lorem ipsum dolor sit amet, consectetur adipisicing dolor sit amet, consectetur adipisicing elit,Lorem ipsum amet, consectetur adipisicing elit,Lorem ipsum dolor sit adipisicing elit,Lorem ipsum dolor sit dolor sit amet, consectetur adipisicing elit,</p>
             </blockquote>
           </figure>
           <figure class="testimonial-card testimonial-card--featured" id="t-2">
@@ -558,8 +559,8 @@
                 </p>
               </div>
             </figcaption>
-            <blockquote class="testimonial-card__quote">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <blockquote class="testimonial-card__quote" lang="la">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing ,Lorem ipsum dolor sit amet, consectetur adipisicing dolor sit amet, consectetur adipisicing elit,Lorem ipsum amet, consectetur adipisicing elit,Lorem ipsum dolor sit adipisicing elit,Lorem ipsum dolor sit dolor sit amet, consectetur adipisicing elit,</p>
             </blockquote>
           </figure>
           <figure class="testimonial-card" id="t-3">
@@ -592,8 +593,8 @@
                 </p>
               </div>
             </figcaption>
-            <blockquote class="testimonial-card__quote">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <blockquote class="testimonial-card__quote" lang="la">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing ,Lorem ipsum dolor sit amet, consectetur adipisicing dolor sit amet, consectetur adipisicing elit,Lorem ipsum amet, consectetur adipisicing elit,Lorem ipsum dolor sit adipisicing elit,Lorem ipsum dolor sit dolor sit amet, consectetur adipisicing elit,</p>
             </blockquote>
           </figure>
         </div>
@@ -615,9 +616,8 @@
         </picture>
 
         <div class="newsletter__inner">
-          <!-- PLACEHOLDER copy: the PRD does not define the newsletter title. -->
-          <h2 class="newsletter__title" id="newsletter-title">Subscribe to our newsletter</h2>
-          <p class="newsletter__subtitle">Join in and get 15% off!</p>
+          <h2 class="newsletter__title" id="newsletter-title">Join in and get 15% off!</h2>
+          <p class="newsletter__subtitle">Subscribe to our newsletter and get 15% off discount code.</p>
 
           <!-- No real submission: the form only exercises native validation (PRD 5.8). -->
           <form class="newsletter__form" action="#" method="get">
@@ -630,7 +630,7 @@
                 name="email"
                 required
                 autocomplete="email"
-                placeholder="Enter your email"
+                placeholder="Email address"
               >
               <svg class="icon newsletter__icon" aria-hidden="true" focusable="false"><use href="#icon-mail" /></svg>
             </div>
@@ -650,37 +650,36 @@
       <div class="footer__inner container">
         <a class="footer__logo" href="/">Coffea</a>
 
-        <!-- PLACEHOLDER link texts: only "Explore Our Products", "Our story", "Plans &amp; pricing" and "Sell your products" come from the design. -->
         <nav class="footer__column" aria-labelledby="footer-privacy">
           <h3 class="footer__heading" id="footer-privacy">Privacy</h3>
           <ul class="footer__list">
-            <li><a class="footer__link" href="#">Privacy policy</a></li>
             <li><a class="footer__link" href="#">Terms of use</a></li>
-            <li><a class="footer__link" href="#">Cookie policy</a></li>
+            <li><a class="footer__link" href="#">Privacy policy</a></li>
+            <li><a class="footer__link" href="#">Cookies</a></li>
           </ul>
         </nav>
         <nav class="footer__column" aria-labelledby="footer-services">
           <h3 class="footer__heading" id="footer-services">Services</h3>
           <ul class="footer__list">
-            <li><a class="footer__link" href="#">Explore Our Products</a></li>
-            <li><a class="footer__link" href="#">Plans &amp; pricing</a></li>
-            <li><a class="footer__link" href="#">Sell your products</a></li>
+            <li><a class="footer__link" href="#">Shop</a></li>
+            <li><a class="footer__link" href="#">Order ahead</a></li>
+            <li><a class="footer__link" href="#">Menu</a></li>
           </ul>
         </nav>
         <nav class="footer__column" aria-labelledby="footer-about">
           <h3 class="footer__heading" id="footer-about">About us</h3>
           <ul class="footer__list">
+            <li><a class="footer__link" href="#">Find a location</a></li>
+            <li><a class="footer__link" href="#">About us</a></li>
             <li><a class="footer__link" href="#">Our story</a></li>
-            <li><a class="footer__link" href="#">Locations</a></li>
-            <li><a class="footer__link" href="#">Careers</a></li>
           </ul>
         </nav>
         <nav class="footer__column" aria-labelledby="footer-information">
           <h3 class="footer__heading" id="footer-information">Information</h3>
           <ul class="footer__list">
-            <li><a class="footer__link" href="#">FAQ</a></li>
-            <li><a class="footer__link" href="#">Help center</a></li>
-            <li><a class="footer__link" href="#">Contact us</a></li>
+            <li><a class="footer__link" href="#">Plans &amp; pricing</a></li>
+            <li><a class="footer__link" href="#">Sell your products</a></li>
+            <li><a class="footer__link" href="#">Jobs</a></li>
           </ul>
         </nav>
 
