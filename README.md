@@ -144,14 +144,14 @@ The "Our Special Dessert" photos are free stock photos from Pexels (Pexels Licen
 | Only the centre testimonial card has a frame from 1024 px | The side cards of the Figma have none (below 1024 px all cards are framed). |
 | Social icons sit in a 36 x 44 px slot from 1024 px | Matches the Figma x positions (36 px pitch). WCAG 2.2 AA needs 24 px; the PRD says 44 px. Change `--size-social-slot` in `css/tokens.css` to restore 44 px. |
 | Dessert cards use real dessert photos and names instead of the coffee photos and "Lungo coffee" of the Figma | The PRD risks table asks for dessert photos. See Image credits. |
-| Real English copy and prices in Argentine pesos instead of the Figma's lorem ipsum, "Lungo coffee" and "Rs. 200" | The PRD risks table asks for real copy and to confirm the currency. Prices use the local format (`$ 2.800`, `<data value="2800">`). |
+| Real English copy and prices in Argentine pesos instead of the Figma's lorem ipsum, "Lungo coffee" and "Rs. 200" | The PRD risks table asks for real copy and to confirm the currency. Prices use the local format (`ARS $ 2.800`, `<data value="2800">`). |
 | Carousel cards reach the 366 x 570 px design size only at about 1812 px and up | Cards share the track width; below that they shrink to fit four per row. |
 | The container is 1344 px wide at a 1440 px viewport | The 1444 px design container cannot fit next to the gutters there; it is 1444 px from 1540 px up. |
 
 ## Open decisions / known limitations
 
 - **Photo licence:** the coffee, hero and promo stock photos (istockphoto) come from a Figma Community template; confirm the licence or replace them before publishing. The four dessert photos are Pexels License (see Image credits).
-- **Currency and language (resolved):** the copy is English and prices are in Argentine pesos (ARS), written `$ 2.800` with a dot as thousands separator; the machine-readable `value` is the plain number (`2800`). The amounts are illustrative: confirm the real menu prices.
+- **Currency and language (resolved):** the copy is English and prices are in Argentine pesos (ARS), written `ARS $ 2.800` with a dot as thousands separator; the machine-readable `value` is the plain number (`2800`). The amounts are illustrative: confirm the real menu prices.
 - **Placeholder kept on purpose:** the identity of the testimonials. The three cards repeat the Figma's "James Smith", "Entrepreneur" and single avatar (the quotes themselves are real English copy; ratings are 4/5/3). Replace them with distinct names, roles and avatars when real customers are chosen. Nav and footer links are `#` placeholders.
 - **Contrast:** the filled star (`#FFB921`) on the sand card is about 1.4:1 and filled vs empty stars about 1.1:1 (the design's own colour; the rating is also exposed through `aria-label`). The borderless newsletter input against the sand band is about 1.2:1 (below 3:1 for non-text UI). Decide whether to darken them.
 - **Carousel arrows** are real anchors from 1024 to 1279 px (three cards fit, so they scroll). From 1280 px all four cards fit, so they are replaced by `aria-hidden` decorative copies (same look and position, not focusable). Add a fifth card and the links would need to be shown at those widths again.

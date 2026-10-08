@@ -163,6 +163,7 @@
     --card-ratio: 366 / 570; /* lower bound for the card height; content can only make it taller */
     --card-image-ratio: 334 / 364;
     --card-button-padding: 0.625rem 1.625rem; /* 10px 26px */
+    --card-price-width: 7.5rem; /* 120px: fits the widest "ARS $ 9.999" (about 119px) so every card wraps its price row at the same width */
     --size-heart: 2.0625rem; /* 33px */
     --inset-heart: 1.125rem; /* 18px from the top edge of the image */
     --inset-heart-end: 1.6875rem; /* 27px from the right edge of the image, as drawn in the design */

@@ -103,17 +103,24 @@
 
   /* ---------- Price and button ---------- */
 
-  /* margin-top: auto pins the row to the bottom when the card is taller than its content. */
+  /*
+   * margin-top: auto pins the row to the bottom when the card is taller than its content.
+   * Price and button sit on one line when they fit (the 1920px design); in narrower cards the button
+   * wraps under the price, left-aligned like the text above. The price has a fixed minimum width so all
+   * cards of a carousel wrap at the same width (Poppins digits differ by about 1px between prices).
+   */
   .product-card__row {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-12);
+    gap: var(--space-8) var(--space-12);
     margin-top: auto;
   }
 
   .product-card__price {
+    min-inline-size: var(--card-price-width);
+    white-space: nowrap;
     font-family: var(--font-ui);
     font-size: var(--fs-lg);
     font-weight: var(--fw-semibold);
